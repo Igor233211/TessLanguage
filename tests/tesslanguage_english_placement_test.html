@@ -1,0 +1,540 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>English Placement Test вЂ” TessLanguage</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --bg-alt: #F0EFEB;
+  --fg: #1A1A1A;
+  --fg-muted: #5C5C5C;
+  --fg-light: #8A8A8A;
+  --accent: #A87CFA;
+  --accent-hover: #8D5BE8;
+  --accent-light: #F4F0FF;
+  --card-bg: #FFFFFF;
+  --card-border: #E5E4E0;
+  --divider: #DDDCD8;
+  --good: #16845b;
+  --bad: #c13d4b;
+  --radius: 12px;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111113;
+    --bg-alt: #1A1A1E;
+    --fg: #EAEAEA;
+    --fg-muted: #A0A0A0;
+    --fg-light: #6E6E6E;
+    --accent: #B899F8;
+    --accent-hover: #D1BDFB;
+    --accent-light: #2A194B;
+    --card-bg: #1E1E22;
+    --card-border: #2C2C30;
+    --divider: #2A2A2E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111113;
+  --bg-alt: #1A1A1E;
+  --fg: #EAEAEA;
+  --fg-muted: #A0A0A0;
+  --fg-light: #6E6E6E;
+  --accent: #B899F8;
+  --accent-hover: #D1BDFB;
+  --accent-light: #2A194B;
+  --card-bg: #1E1E22;
+  --card-border: #2C2C30;
+  --divider: #2A2A2E;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--divider);
+  padding: 16px 24px;
+}
+.header-inner {
+  max-width: 1020px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--fg);
+  text-decoration: none;
+}
+.logo span { color: var(--accent); }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.back-link {
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle:hover { background: var(--bg-alt); color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; }
+
+main {
+  max-width: 1020px;
+  margin: 32px auto;
+  padding: 0 18px 60px;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--fg);
+}
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.15; margin-bottom: 12px; }
+h2 { font-size: 1.5rem; margin-bottom: 6px; }
+h3 { font-size: 1.125rem; margin-bottom: 12px; }
+.muted { color: var(--fg-muted); }
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.pill {
+  font-size: 0.75rem;
+  border-radius: 99px;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 5px 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 650;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+button:hover { background: var(--accent-hover); }
+button.secondary {
+  background: var(--bg-alt);
+  color: var(--fg);
+  border: 1px solid var(--card-border);
+}
+button.secondary:hover { background: var(--card-border); }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.progress-wrap {
+  position: sticky;
+  top: 68px;
+  background: var(--bg);
+  backdrop-filter: blur(10px);
+  padding: 12px 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--divider);
+  margin-bottom: 20px;
+}
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--fg-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.progress {
+  height: 6px;
+  background: var(--bg-alt);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.bar {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.count {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.q { padding: 20px 0; border-top: 1px solid var(--divider); }
+.q:first-of-type { border-top: 0; }
+.q p { font-weight: 600; margin-bottom: 12px; color: var(--fg); }
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.opt {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 450;
+  transition: border-color 0.2s, background 0.2s;
+}
+.opt:hover { border-color: var(--accent); background: var(--bg-alt); }
+.opt input { margin-top: 4px; accent-color: var(--accent); }
+.opt:has(input:checked) { border-color: var(--accent); background: var(--accent-light); }
+
+.passage {
+  background: var(--bg-alt);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  white-space: pre-line;
+  font-size: 0.9375rem;
+  color: var(--fg-muted);
+}
+.audio-box {
+  border: 1.5px dashed var(--accent);
+  background: var(--accent-light);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.audio-box input { display: block; margin-top: 10px; max-width: 100%; color: var(--fg); }
+audio { display: block; width: 100%; margin-top: 12px; }
+
+textarea {
+  width: 100%;
+  min-height: 160px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--fg);
+  border-radius: 10px;
+  padding: 14px;
+  font: inherit;
+  resize: vertical;
+}
+textarea:focus, input[type=text]:focus { outline: 2px solid var(--accent); }
+.field { margin: 16px 0; }
+.field label { display: block; font-weight: 600; margin-bottom: 6px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: space-between; margin-top: 24px; }
+.hidden { display: none !important; }
+
+.result-level { font-size: 3rem; font-family: var(--font-display); color: var(--accent); margin: 8px 0; }
+.score-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0; }
+.score-box { border: 1px solid var(--card-border); background: var(--card-bg); border-radius: 12px; padding: 16px; }
+.score-box strong { display: block; font-size: 1.5rem; font-family: var(--font-display); color: var(--fg); }
+.score-box span { font-size: 0.8125rem; color: var(--fg-muted); }
+.result-note { background: var(--bg-alt); border-radius: 12px; padding: 20px; }
+.skill-row { margin: 14px 0; }
+.skill-label { display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 6px; font-weight: 500; }
+.mini-track { height: 8px; border-radius: 9px; background: var(--card-border); overflow: hidden; }
+.mini-fill { height: 100%; background: var(--accent); border-radius: 9px; }
+
+footer { text-align: center; color: var(--fg-light); font-size: 0.8125rem; padding: 30px 0; }
+
+@media(max-width: 768px) {
+  .intro-grid { grid-template-columns: 1fr; }
+  .opts { grid-template-columns: 1fr; }
+  .score-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../tesslanguage.html" class="logo">Tess<span>Language</span></a>
+    <div class="header-right">
+      <a href="../tesslanguage.html" class="back-link">в†ђ РќР° РіРѕР»РѕРІРЅСѓ СЃР°Р№С‚Сѓ</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Р—РјС–РЅРёС‚Рё С‚РµРјСѓ">
+        <svg id="themeIconSun" viewBox="0 0 24 24" style="display: none;"><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+        <svg id="themeIconMoon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" fill="none" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="welcome" class="card">
+  <div class="intro-grid">
+    <div>
+      <div class="pills"><span class="pill">A1вЂ“C2 CEFR</span><span class="pill">Skills-based assessment</span><span class="pill">Approx. 35вЂ“50 min</span></div>
+      <h1>English Placement Test</h1>
+      <p class="muted">Discover your current English level and get a personalised recommendation for your next stage of learning.</p>
+      <ul style="margin: 16px 0 16px 20px; color: var(--fg-muted);">
+        <li>Grammar and vocabulary</li>
+        <li>Three reading tasks</li>
+        <li>Three listening tasks</li>
+        <li>Optional writing assessment</li>
+      </ul>
+      <p class="muted" style="margin-bottom: 20px;"><strong>Before you begin:</strong> choose the best answer for each question. Try not to use dictionaries or translators. Listening recordings are built into the test вЂ” headphones are recommended.</p>
+      <button id="startBtn">Start placement test в†’</button>
+    </div>
+    <div class="result-note">
+      <h3>How it works</h3>
+      <p style="margin-bottom: 12px; font-size: 0.9375rem; color: var(--fg-muted);">Questions gradually increase in difficulty. Your result combines your section scores and performance on level-tagged questions; it is an estimate, not an official certificate.</p>
+      <p class="muted" style="font-size: 0.875rem;">You can skip optional writing, but complete all objective sections for the most useful result.</p>
+    </div>
+  </div>
+</section>
+
+<div id="testArea" class="hidden">
+  <div class="progress-wrap">
+    <div class="progress-meta"><span id="progressText">Section 1 of 5</span><span id="progressPct">0% complete</span></div>
+    <div class="progress"><div class="bar" id="progressBar"></div></div>
+  </div>
+  <form id="testForm">
+    <section class="card test-section" data-section="0">
+      <div class="section-title"><div><h2>1. Grammar</h2><div class="muted">Choose one correct answer for each question.</div></div><span class="count">20 questions</span></div>
+      <div id="grammarQs"></div>
+    </section>
+    <section class="card test-section hidden" data-section="1">
+      <div class="section-title"><div><h2>2. Vocabulary</h2><div class="muted">Choose the word or phrase that best completes each sentence.</div></div><span class="count">15 questions</span></div>
+      <div id="vocabQs"></div>
+    </section>
+    <section class="card test-section hidden" data-section="2">
+      <div class="section-title"><div><h2>3. Reading</h2><div class="muted">Read each passage and answer the questions.</div></div><span class="count">9 questions</span></div>
+      <div id="readingQs"></div>
+    </section>
+    <section class="card test-section hidden" data-section="3">
+      <div class="section-title"><div><h2>4. Listening</h2><div class="muted">Play each recording, then answer the questions. Transcripts are not shown.</div></div><span class="count">9 questions</span></div>
+      <div id="listeningQs"></div>
+    </section>
+    <section class="card test-section hidden" data-section="4">
+      <div class="section-title"><div><h2>5. Writing (optional)</h2><div class="muted">Write 100вЂ“180 words. Your writing is not automatically graded; use the rubric in your results.</div></div><span class="count">Optional</span></div>
+      <p style="margin-bottom: 12px; color: var(--fg-muted);"><strong>Task:</strong> Describe a change you would like to make in your life, studies, or work. Explain why it matters, what you would do, and what challenges you might face. Try to use language that feels natural to you.</p>
+      <textarea id="writing" maxlength="2500" placeholder="Write your response hereвЂ¦"></textarea>
+      <div class="muted" id="wordCount" style="margin-top: 6px;">0 words</div>
+      <div class="result-note" style="margin-top:20px">
+        <strong>Writing rubric (0вЂ“5 each)</strong><br>Grammar accuracy В· Vocabulary range and appropriacy В· Coherence and organisation В· Task completion and development. A teacher should assess this section; it is excluded from the automatic score.
+      </div>
+    </section>
+    <div class="card actions">
+      <button type="button" class="secondary" id="backBtn">в†ђ Previous</button>
+      <div>
+        <button type="button" id="nextBtn">Next section в†’</button>
+        <button type="submit" id="submitBtn" class="hidden">Finish and see results</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<section id="results" class="card hidden"></section>
+<footer>В© TessLanguage В· English placement assessment В· Results are estimates, not official certification.</footer>
+</main>
+
+<script>
+// Theme switcher logic
+const themeToggle = document.getElementById('themeToggle');
+const themeIconSun = document.getElementById('themeIconSun');
+const themeIconMoon = document.getElementById('themeIconMoon');
+
+function updateThemeIcons(isDark) {
+  if(isDark) {
+    themeIconSun.style.display = 'block';
+    themeIconMoon.style.display = 'none';
+  } else {
+    themeIconSun.style.display = 'none';
+    themeIconMoon.style.display = 'block';
+  }
+}
+
+const savedTheme = localStorage.getItem('tess_theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcons(savedTheme === 'dark');
+} else {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  updateThemeIcons(prefersDark);
+}
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  let newTheme = 'light';
+  if (!currentTheme) {
+    newTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
+  } else {
+    newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  }
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('tess_theme', newTheme);
+  updateThemeIcons(newTheme === 'dark');
+});
+
+const grammar = [
+["She ___ from Poland.","come","comes","is come","coming","B","A1"],
+["We ___ breakfast at the moment.","have","are having","has","having","B","A1"],
+["I ___ my keys yesterday.","lose","have lost","lost","was lose","C","A2"],
+["There isn't ___ milk left.","some","many","a few","much","D","A2"],
+["If it rains tomorrow, we ___ at home.","stay","would stay","will stay","stayed","C","A2"],
+["I've lived here ___ 2021.","for","since","during","from","B","B1"],
+["You ___ wear a seat belt; it's the law.","might","could","must","would","C","B1"],
+["The meeting ___ by the time I arrived.","has finished","had finished","was finishing","would finish","B","B1"],
+["This is the cafГ© ___ we first met.","which","whose","where","who","C","B1"],
+["The new bridge ___ next year.","will complete","will be completed","is completing","has completed","B","B1"],
+["She asked me where I ___.","live","do I live","lived","have lived","C","B2"],
+["If I ___ about the delay, I would have left later.","knew","had known","would know","have known","B","B2"],
+["He denied ___ the confidential email.","to send","send","having sent","to have send","C","B2"],
+["Rarely ___ such a convincing performance.","I have seen","have I seen","I saw","I had saw","B","C1"],
+["I wish I ___ so much money on that course.","didn't spend","haven't spent","hadn't spent","wouldn't spend","C","B2"],
+["The proposal, ___ several revisions, was finally approved.","having undergone","has undergone","to undergo","undergo","A","C1"],
+["Not only ___ the deadline, but she also exceeded expectations.","she met","did she meet","met she","she did meet","B","C1"],
+["Were the company ___ its policy, many employees would benefit.","change","changed","to change","changing","C","C1"],
+["His explanation was so ___ that nobody questioned the result.","plausible","plausibly","plausibility","implausible","A","B2"],
+["The report recommends that every applicant ___ an interview.","attends","attend","attended","will attend","B","C2"]
+];
+const vocab = [
+["I usually ___ the bus to work.","do","take","make","catch up","B","A1"],
+["Could you ___ me a hand with these bags?","give","make","do","put","A","A2"],
+["We need to ___ a decision by Friday.","do","take","make","set","C","A2"],
+["I'm looking ___ to the holidays.","after","forward","up","over","B","B1"],
+["The event was ___ because of bad weather.","put off","taken up","looked into","brought about","A","B1"],
+["She is very good ___ solving problems.","in","at","on","for","B","B1"],
+["The company hopes to ___ its customer base.","expand","extend","enlarge up","increase out","A","B1"],
+["His comments were completely ___ to the discussion.","relevant","reliable","relative","reluctant","A","B2"],
+["The manager tried to ___ the concerns raised by staff.","address","locate","attend","approach to","A","B2"],
+["The plan sounds good in theory, but it may not be ___ in practice.","feasible","feeble","futilely","faithful","A","B2"],
+["Her argument was undermined by a basic factual ___.","oversight","oversaw","overlook","overseeing","A","C1"],
+["The findings are ___ with earlier research.","consistent","considerate","consecutive","conscious","A","B2"],
+["He gave a ___ account of the events, leaving out key details.","candid","selective","comprehensive","impartial","B","C1"],
+["The policy was introduced to ___ the impact of rising costs.","alleviate","aggravate","allocate","articulate","A","C1"],
+["The claim is not merely doubtful; it is entirely ___.","tenable","untenable","attainable","attentive","B","C2"]
+];
+const readings = [
+{title:"A new routine",level:"A1вЂ“A2",text:"Mia has a busy week. She works in a bookshop from Monday to Friday and studies English online twice a week. On Saturdays, she visits her grandmother, who lives near the sea. Mia wants to improve her English because she hopes to travel to Ireland next year. She studies for twenty minutes every morning and listens to English podcasts on the bus.",qs:[
+["Where does Mia work?","At a school","In a bookshop","At a hotel","In a cafГ©","B"],
+["When does she visit her grandmother?","On Fridays","Every morning","On Saturdays","Twice a week","C"],
+["Why is she learning English?","To move house","To travel to Ireland","To become a teacher","To help her grandmother","B"]]},
+{title:"Working flexibly",level:"B1вЂ“B2",text:"When a small design agency introduced flexible working, the managers expected productivity to rise immediately. The results were more complicated. Some employees appreciated being able to organise their day around family responsibilities, while others missed the informal conversations that used to happen in the office. After three months, the agency introduced two shared office days each week. Staff reported better communication, although the arrangement did not suit everyone. The managers concluded that flexibility worked best when teams agreed on clear expectations rather than following a single rule.",qs:[
+["What did the managers initially expect?","Higher productivity","Lower office costs only","More staff resignations","Fewer client projects","A"],
+["Why did the agency introduce shared office days?","To monitor staff hours","To improve communication","To reduce annual leave","To hire more designers","B"],
+["What is the main conclusion?","Remote work never works","Everyone prefers the office","A single policy suits all teams","Flexibility needs clear, agreed expectations","D"]]},
+{title:"The value of uncertainty",level:"C1вЂ“C2",text:"Public discussion often treats uncertainty as a defect to be eliminated, particularly when institutions communicate scientific findings. Yet uncertainty can be a sign of intellectual discipline: it distinguishes what the evidence supports from what remains conjectural. Problems arise when qualified statements are simplified into absolute claims, or when the public interprets a revision as proof that experts were unreliable all along. A more productive approach would make the limits of current knowledge visible without implying that all explanations are equally credible. The task is not to celebrate indecision, but to communicate degrees of confidence with enough precision that people can make informed choices.",qs:[
+["What does the passage suggest uncertainty can demonstrate?","A lack of expertise","Intellectual discipline","Indifference to evidence","A refusal to decide","B"],
+["How can public trust be damaged?","By acknowledging limits","By comparing evidence","When revisions are treated as proof of unreliability","When all claims are carefully qualified","C"],
+["What approach does the writer favour?","Treating every explanation as equally valid","Avoiding scientific communication","Presenting every finding as certain","Explaining confidence levels precisely","D"]]}
+];
+const listening = [
+{title:"Task 1 вЂ” Everyday conversation",level:"A1вЂ“A2",hint:"Listen to two friends arranging to meet.",qs:[
+["What time are the speakers planning to meet?","At 10:15","At 10:30","At 11:00","At 11:30","B"],
+["Where will they meet?","Outside the station","Inside the library","At a cafГ©","At the bus stop","C"],
+["Why might one speaker be late?","Their bus is delayed","They have lost a wallet","They need to work late","They forgot the address","A"]]},
+{title:"Task 2 вЂ” An announcement",level:"B1вЂ“B2",hint:"Listen to an announcement at a conference. Listen for the changes and practical details.",qs:[
+["What has changed?","The event date","The room for the afternoon session","The speaker's name","The ticket price","B"],
+["What should attendees do before the session?","Collect a new ticket","Email the organiser","Register at the front desk","Wait outside","C"],
+["What will be provided?","Lunch","Printed dictionaries","Transport","A recording of every session","A"]]},
+{title:"Task 3 вЂ” Longer discussion",level:"C1вЂ“C2",hint:"Listen to a radio interview about technology in education.",qs:[
+["What is the speaker's main argument?","Technology always improves learning","Learning outcomes depend on how tools are used","Traditional teaching should be abandoned","Students prefer working alone","B"],
+["What concern is mentioned?","The cost of textbooks","Unequal access to reliable technology","Too many exams","Lack of classroom space","B"],
+["What does the speaker recommend?","Replacing teachers with software","Banning digital tools","Evaluating tools against clear learning goals","Using the same tool in every class","C"]]}
+];
+const AUDIO = ["audio/en_listening_1.mp3", "audio/en_listening_2.mp3", "audio/en_listening_3.mp3"];
+document.addEventListener('play',e=>{document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause()})},true);
+const letters=["A","B","C","D"];
+function renderMC(target, items, prefix){
+ const root=document.getElementById(target); let n=0;
+ if(prefix==="reading"||prefix==="listening"){
+  items.forEach((group,gi)=>{
+   if(prefix==="reading"){const passage=document.createElement("div");passage.className="passage";passage.innerHTML="<strong>"+group.title+" В· "+group.level+"</strong><br>"+group.text;root.appendChild(passage)}
+   else{
+    const box=document.createElement("div");box.className="audio-box";box.innerHTML="<h3>"+group.title+" В· "+group.level+"</h3><p class='muted'>"+group.hint+"</p><audio controls preload='metadata' src='"+AUDIO[gi]+"'></audio>";root.appendChild(box);
+   }
+   group.qs.forEach((q,qi)=>{n++;root.appendChild(question(prefix+"_"+gi+"_"+qi,n,q[0],q.slice(1,5),q[5],group.level))});
+  });return;
+ }
+ items.forEach((q,i)=>{n++;root.appendChild(question(prefix+"_"+i,n,q[0],q.slice(1,5),q[5],q[6]))});
+}
+function question(name,num,text,opts,correct,level){
+ const d=document.createElement("div");d.className="q";d.dataset.level=level||"";
+ const p=document.createElement("p");p.textContent=num+". "+text;d.appendChild(p);
+ const grid=document.createElement("div");grid.className="opts";
+ opts.forEach((o,i)=>{const lab=document.createElement("label");lab.className="opt";lab.innerHTML="<input type='radio' name='"+name+"' value='"+letters[i]+"' aria-label='"+letters[i]+": "+o+"'><span><strong>"+letters[i]+".</strong> "+o+"</span>";grid.appendChild(lab)});
+ d.appendChild(grid);d.dataset.correct=correct;return d;
+}
+renderMC("grammarQs",grammar,"grammar");renderMC("vocabQs",vocab,"vocab");renderMC("readingQs",readings,"reading");renderMC("listeningQs",listening,"listening");
+let current=0;const sections=[...document.querySelectorAll(".test-section")];
+function showSection(idx){current=idx;sections.forEach((s,i)=>s.classList.toggle("hidden",i!==idx));document.getElementById("backBtn").disabled=idx===0;document.getElementById("nextBtn").classList.toggle("hidden",idx===sections.length-1);document.getElementById("submitBtn").classList.toggle("hidden",idx!==sections.length-1);document.getElementById("progressText").textContent="Section "+(idx+1)+" of "+sections.length;document.getElementById("progressPct").textContent=Math.round((idx/sections.length)*100)+"% viewed";document.getElementById("progressBar").style.width=(idx/sections.length*100)+"%";window.scrollTo({top:0,behavior:"smooth"})}
+document.getElementById("startBtn").onclick=()=>{document.getElementById("welcome").classList.add("hidden");document.getElementById("testArea").classList.remove("hidden");showSection(0)};
+document.getElementById("backBtn").onclick=()=>showSection(Math.max(0,current-1));
+document.getElementById("nextBtn").onclick=()=>{if(current===2&&!confirm("Continue to listening? Make sure your sound is on. Your answers will be saved."))return;showSection(Math.min(sections.length-1,current+1))};
+document.getElementById("writing").addEventListener("input",e=>{const words=e.target.value.trim()?e.target.value.trim().split(/\s+/).length:0;document.getElementById("wordCount").textContent=words+" words"});
+function scoreSection(section){const qs=[...section.querySelectorAll(".q[data-correct]")];let right=0,answered=0,byLevel={};qs.forEach(q=>{const checked=q.querySelector("input:checked");if(checked)answered++;const lev=q.dataset.level||"Unknown";byLevel[lev]??={total:0,right:0};byLevel[lev].total++;if(checked&&checked.value===q.dataset.correct){right++;byLevel[lev].right++}});return {right,total:qs.length,answered,pct:qs.length?Math.round(right/qs.length*100):0,byLevel}}
+function levelEstimate(scores){
+ const all=[...document.querySelectorAll(".q[data-correct]")];let weighted=0,weight=0;
+ const vals={"A1":1,"A1вЂ“A2":1.5,"A2":2,"B1":3,"B1вЂ“B2":3.5,"B2":4,"C1":5,"C2":6};
+ all.forEach(q=>{const checked=q.querySelector("input:checked");if(!checked||checked.value!==q.dataset.correct)return;const v=vals[q.dataset.level]||3;weighted+=v;weight++});
+ const total=all.length, pct=total?Object.values(scores).reduce((a,s)=>a+s.right,0)/total:0;
+ const raw=weight?weighted/weight:1;let lvl;
+ if(pct<.22)lvl="A1";else if(pct<.36)lvl=raw<2.2?"A1":"A2";else if(pct<.52)lvl=raw<2.8?"A2":"B1";else if(pct<.68)lvl=raw<3.5?"B1":"B2";else if(pct<.82)lvl=raw<4.5?"B2":"C1";else lvl=raw<5.4?"C1":"C2";
+ return {lvl,pct:Math.round(pct*100),correct:weight,total};
+}
+function renderResults(){
+ const score={};sections.slice(0,4).forEach((s,i)=>score[["Grammar","Vocabulary","Reading","Listening"][i]]=scoreSection(s));
+ const objectiveTotal=Object.values(score).reduce((a,s)=>a+s.total,0),correctTotal=Object.values(score).reduce((a,s)=>a+s.right,0);
+ const estimate=levelEstimate(score),r=document.getElementById("results");
+ const skillNames=Object.keys(score);
+ let skillHTML=skillNames.map(k=>`<div class="skill-row"><div class="skill-label"><span>${k}</span><strong>${score[k].right}/${score[k].total} В· ${score[k].pct}%</strong></div><div class="mini-track"><div class="mini-fill" style="width:${score[k].pct}%"></div></div></div>`).join("");
+ const best=skillNames.slice().sort((a,b)=>score[b].pct-score[a].pct)[0],weak=skillNames.slice().sort((a,b)=>score[a].pct-score[b].pct)[0];
+ const rec={"A1":"Start with everyday words, basic sentence patterns, and present-tense communication.","A2":"Build confidence with past and future forms, practical vocabulary, and short everyday texts.","B1":"Practise connected speech, common collocations, longer texts, and explaining opinions.","B2":"Focus on nuance, complex grammar, idiomatic language, and structured argumentation.","C1":"Develop precision, register awareness, advanced collocations, and critical reading/listening.","C2":"Maintain a broad range of authentic input and refine subtle differences in meaning, style, and register."};
+ r.innerHTML=`<div class="pills"><span class="pill">Assessment complete</span><span class="pill">Estimated CEFR result</span></div><h1>Your TessLanguage results</h1><p class="muted">Your estimated level is</p><div class="result-level">${estimate.lvl}</div><p class="muted">CEFR estimate based on accuracy and performance across questions of increasing difficulty. It is not an official certification.</p><div class="score-grid"><div class="score-box"><strong>${Math.round(correctTotal/objectiveTotal*100)}%</strong><span>Overall objective score</span></div><div class="score-box"><strong>${correctTotal}/${objectiveTotal}</strong><span>Correct answers</span></div><div class="score-box"><strong>${score.Listening.pct}%</strong><span>Listening score*</span></div><div class="score-box"><strong>${estimate.lvl}</strong><span>Suggested study level</span></div></div><h2>Skill breakdown</h2>${skillHTML}<div class="result-note"><h3>What this suggests</h3><p style="margin-bottom: 8px;">Your strongest section in this attempt was <strong>${best}</strong>; the section to prioritise is <strong>${weak}</strong>.</p><p style="margin-bottom: 12px;">${rec[estimate.lvl]}</p><p style="margin-bottom: 14px;"><strong>Recommended next step:</strong> book a free 45-minute trial lesson with TessLanguage. A teacher can confirm your level in a live conversation and assess speaking and writing, which this automated test cannot fully measure.</p><button onclick="window.location.href='https://bookon.ua/s/tess.language'">Book a free 45-minute trial lesson в†’</button></div><h2 style="margin-top:24px">Writing (optional вЂ” teacher assessment)</h2><p class="muted">Writing is not included in the automatic score. A teacher can assess your response using the rubric: grammar, vocabulary, coherence, and task completion (0вЂ“5 each). If you wrote a response, copy it before leaving this page if you want to keep it.</p><p class="muted" style="margin-top: 8px;">*The listening score is based on the recordings built into this test.</p><div class="actions"><button class="secondary" onclick="window.print()">Print results</button><button onclick="location.reload()">Retake test</button></div>`;
+ document.getElementById("testArea").classList.add("hidden");r.classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});
+}
+document.getElementById("testForm").addEventListener("submit",e=>{e.preventDefault();if(!confirm("Submit your answers and view your results? Correct answers will not be displayed."))return;renderResults()});
+</script>
+</body>
+</html>

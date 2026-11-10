@@ -1,0 +1,382 @@
+﻿<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test de niveau de franГ§ais вЂ” TessLanguage</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --bg-alt: #F0EFEB;
+  --fg: #1A1A1A;
+  --fg-muted: #5C5C5C;
+  --fg-light: #8A8A8A;
+  --accent: #A87CFA;
+  --accent-hover: #8D5BE8;
+  --accent-light: #F4F0FF;
+  --card-bg: #FFFFFF;
+  --card-border: #E5E4E0;
+  --divider: #DDDCD8;
+  --radius: 12px;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111113;
+    --bg-alt: #1A1A1E;
+    --fg: #EAEAEA;
+    --fg-muted: #A0A0A0;
+    --fg-light: #6E6E6E;
+    --accent: #B899F8;
+    --accent-hover: #D1BDFB;
+    --accent-light: #2A194B;
+    --card-bg: #1E1E22;
+    --card-border: #2C2C30;
+    --divider: #2A2A2E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111113;
+  --bg-alt: #1A1A1E;
+  --fg: #EAEAEA;
+  --fg-muted: #A0A0A0;
+  --fg-light: #6E6E6E;
+  --accent: #B899F8;
+  --accent-hover: #D1BDFB;
+  --accent-light: #2A194B;
+  --card-bg: #1E1E22;
+  --card-border: #2C2C30;
+  --divider: #2A2A2E;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--divider);
+  padding: 16px 24px;
+}
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--fg);
+  text-decoration: none;
+}
+.logo span { color: var(--accent); }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.back-link {
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle:hover { background: var(--bg-alt); color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; }
+
+main {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 18px 60px;
+}
+.panel {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin: 20px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--fg);
+}
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.15; margin-bottom: 8px; }
+h2 { font-size: 1.5rem; margin-bottom: 8px; }
+h3 { font-size: 1.125rem; margin-bottom: 12px; }
+.intro, .hint, .notice, .subtitle { color: var(--fg-muted); }
+.subtitle { font-size: 1rem; margin-bottom: 16px; }
+.barrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.125rem;
+  background: var(--accent-light);
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: var(--accent);
+}
+progress {
+  width: 100%;
+  height: 8px;
+  accent-color: var(--accent);
+  border-radius: 4px;
+  background: var(--bg-alt);
+}
+.question { padding: 20px 0; border-top: 1px solid var(--divider); }
+.question:first-of-type { border-top: 0; }
+.qtitle { font-weight: 600; margin-bottom: 12px; color: var(--fg); }
+.level {
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 99px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  font-weight: 650;
+}
+label.option {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  margin: 8px 0;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+label.option:hover { border-color: var(--accent); background: var(--bg-alt); }
+label.option:has(input:checked) { border-color: var(--accent); background: var(--accent-light); }
+input[type=radio] { margin-top: 4px; accent-color: var(--accent); }
+.passage {
+  background: var(--bg-alt);
+  border-left: 3px solid var(--accent);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 14px 0;
+  color: var(--fg-muted);
+}
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.primary { background: var(--accent); color: white; }
+.primary:hover { background: var(--accent-hover); }
+.secondary { background: var(--bg-alt); color: var(--fg); border: 1px solid var(--card-border); }
+.secondary:hover { background: var(--card-border); }
+.actions, .audio-controls { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+.result { display: none; }
+.biglevel { font-size: 3rem; font-family: var(--font-display); color: var(--accent); margin: 10px 0; }
+.scoregrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+.score { background: var(--accent-light); border-radius: 12px; padding: 16px; border: 1px solid var(--card-border); }
+.score strong { display: block; font-size: 1.5rem; font-family: var(--font-display); color: var(--fg); }
+.score span { color: var(--fg-muted); font-size: 0.875rem; }
+.hidden { display: none !important; }
+audio { display: block; width: 100%; margin-top: 12px; }
+footer { text-align: center; color: var(--fg-light); font-size: 0.8125rem; padding: 30px 0; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../tesslanguage.html" class="logo">Tess<span>Language</span></a>
+    <div class="header-right">
+      <a href="../tesslanguage.html" class="back-link">в†ђ РќР° РіРѕР»РѕРІРЅСѓ СЃР°Р№С‚Сѓ</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Р—РјС–РЅРёС‚Рё С‚РµРјСѓ">
+        <svg id="themeIconSun" viewBox="0 0 24 24" style="display: none;"><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+        <svg id="themeIconMoon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" fill="none" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div style="margin-bottom: 24px;">
+  <h1>Test de niveau de franГ§ais</h1>
+  <div class="subtitle">TessLanguage В· Г‰valuation indicative A1вЂ“C2</div>
+</div>
+
+<section class="panel" id="intro">
+  <h2>Bienvenue ! / Р’С–С‚Р°С”РјРѕ!</h2>
+  <p class="intro" style="margin: 12px 0;">Ce test gratuit Г©value la grammaire, le vocabulaire, la comprГ©hension Г©crite et orale. DurГ©e maximale : 50 minutes. Le rГ©sultat est indicatif et ne constitue pas un certificat officiel.</p>
+  <ul style="margin: 12px 0 16px 20px;" class="hint">
+    <li>Grammaire / Р“СЂР°РјРјР°С‚РёРєР° вЂ” 15 questions</li>
+    <li>Vocabulaire / Р›РµРєСЃРёРєР° вЂ” 12 questions</li>
+    <li>Lecture / Р§РёС‚Р°РЅРЅСЏ вЂ” 3 textes</li>
+    <li>Г‰coute / РђСѓРґС–СЋРІР°РЅРЅСЏ вЂ” 3 audios</li>
+  </ul>
+  <p class="hint">Les enregistrements sont intГ©grГ©s au test : utilisez le lecteur sous chaque extrait (casque conseillГ©). / РђСѓРґС–РѕР·Р°РїРёСЃРё РІР±СѓРґРѕРІР°РЅС– РІ С‚РµСЃС‚ вЂ” СЃР»СѓС…Р°Р№С‚Рµ С—С… Сѓ РїР»РµС”СЂС– РїС–Рґ РєРѕР¶РЅРёРј Р·Р°РІРґР°РЅРЅСЏРј (Р±Р°Р¶Р°РЅРѕ РІ РЅР°РІСѓС€РЅРёРєР°С…).</p>
+  <div class="actions">
+    <button class="primary" id="startBtn">Commencer / Р РѕР·РїРѕС‡Р°С‚Рё С‚РµСЃС‚</button>
+  </div>
+</section>
+
+<div id="test" class="hidden">
+  <div class="panel">
+    <div class="barrow">
+      <div><strong>Progression / РџСЂРѕРіСЂРµСЃ</strong><div class="hint" id="progressText">0 %</div></div>
+      <div class="timer" id="timer">50:00</div>
+    </div>
+    <progress id="progress" value="0" max="100"></progress>
+    <p class="hint" style="margin-top: 8px;">Temps maximal : 50 minutes / РњР°РєСЃРёРјР°Р»СЊРЅРёР№ С‡Р°СЃ: 50 С…РІРёР»РёРЅ.</p>
+  </div>
+  <form id="quiz">
+    <section class="panel">
+      <h2>1. Grammaire / Р“СЂР°РјР°С‚РёРєР°</h2>
+      <p class="hint">15 questions В· environ 10 minutes</p>
+      <div id="grammar"></div>
+    </section>
+    <section class="panel">
+      <h2>2. Vocabulaire / Р›РµРєСЃРёРєР°</h2>
+      <p class="hint">12 questions В· environ 7 minutes</p>
+      <div id="vocab"></div>
+    </section>
+    <section class="panel">
+      <h2>3. ComprГ©hension Г©crite / Р§РёС‚Р°РЅРЅСЏ</h2>
+      <p class="hint">3 textes В· environ 10 minutes</p>
+      <div id="reading"></div>
+    </section>
+    <section class="panel">
+      <h2>4. ComprГ©hension orale / РђСѓРґС–СЋРІР°РЅРЅСЏ</h2>
+      <p class="hint">3 audios В· environ 10 minutes</p>
+      <div id="listening"></div>
+    </section>
+    <section class="panel">
+      <h3>PrГЄt Г  envoyer ? / Р“РѕС‚РѕРІРѕ РґРѕ РІС–РґРїСЂР°РІРєРё?</h3>
+      <p class="hint" style="margin-bottom: 12px;">Les bonnes rГ©ponses ne sont pas affichГ©es avant lвЂ™envoi. / РџСЂР°РІРёР»СЊРЅС– РІС–РґРїРѕРІС–РґС– РЅРµ РІС–РґРѕР±СЂР°Р¶Р°СЋС‚СЊСЃСЏ РґРѕ РІС–РґРїСЂР°РІРєРё.</p>
+      <button class="primary" type="submit">Terminer et voir le rГ©sultat / Р—Р°РІРµСЂС€РёС‚Рё С– РїРѕР±Р°С‡РёС‚Рё СЂРµР·СѓР»СЊС‚Р°С‚</button>
+    </section>
+  </form>
+</div>
+
+<section class="panel result" id="result">
+  <h2>Votre rГ©sultat / Р’Р°С€ СЂРµР·СѓР»СЊС‚Р°С‚</h2>
+  <div class="biglevel" id="level"></div>
+  <p id="resultIntro" style="margin-bottom: 16px;"></p>
+  <div class="scoregrid" id="scores"></div>
+  <h3 style="margin-top: 24px;">Recommandations / Р РµРєРѕРјРµРЅРґР°С†РёРё</h3>
+  <p id="recommendations" style="margin-bottom: 16px; color: var(--fg-muted);"></p>
+  <p class="notice" style="margin-bottom: 20px;">RГ©sultat indicatif, pas un certificat officiel. / РћСЂС–С”РЅС‚РѕРІРЅРёР№ СЂРµР·СѓР»СЊС‚Р°С‚, РЅРµ С” РѕС„С–С†С–Р№РЅРёРј СЃРµСЂС‚РёС„С–РєР°С‚РѕРј.</p>
+  <div class="actions">
+    <button class="primary" id="cta" onclick="window.location.href='https://bookon.ua/s/tess.language'">RГ©server une leГ§on dвЂ™essai gratuite de 45 min / Р—Р°РїРёСЃР°С‚РёСЃСЏ РЅР° Р±РµР·РєРѕС€С‚РѕРІРЅРµ РїСЂРѕР±РЅРµ Р·Р°РЅСЏС‚С‚СЏ</button>
+    <button class="secondary" onclick="window.print()">Imprimer / Р”СЂСѓРє</button>
+  </div>
+  <p class="notice" id="ctaNote" style="margin-top: 12px;"></p>
+</section>
+</main>
+
+<footer>TessLanguage В· Test de niveau de franГ§ais В· RГ©sultat indicatif</footer>
+
+<script>
+// Theme switcher logic
+const themeToggle = document.getElementById('themeToggle');
+const themeIconSun = document.getElementById('themeIconSun');
+const themeIconMoon = document.getElementById('themeIconMoon');
+
+function updateThemeIcons(isDark) {
+  if(isDark) {
+    themeIconSun.style.display = 'block';
+    themeIconMoon.style.display = 'none';
+  } else {
+    themeIconSun.style.display = 'none';
+    themeIconMoon.style.display = 'block';
+  }
+}
+
+const savedTheme = localStorage.getItem('tess_theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcons(savedTheme === 'dark');
+} else {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  updateThemeIcons(prefersDark);
+}
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('tess_theme', newTheme);
+  updateThemeIcons(newTheme === 'dark');
+});
+
+const D={"lang": "fr", "title": "Test de niveau de franГ§ais", "subtitle": "TessLanguage В· Г‰valuation indicative A1вЂ“C2", "intro": "Ce test gratuit Г©value la grammaire, le vocabulaire, la comprГ©hension Г©crite et orale. DurГ©e maximale : 50 minutes. Le rГ©sultat est indicatif et ne constitue pas un certificat officiel.", "grammar": [["Je ___ Г©tudiante.", ["suis", "es", "est", "sommes"], 0, "A1"], ["Nous ___ franГ§ais tous les lundis.", ["parle", "parlons", "parlez", "parlent"], 1, "A1"], ["Il nвЂ™y a pas ___ lait.", ["du", "de la", "de", "des"], 2, "A2"], ["Hier, elles ___ au cinГ©ma.", ["sont allГ©es", "ont allГ©", "allaient allГ©es", "sont allГ©"], 0, "A2"], ["Quand jвЂ™Г©tais petit, je ___ souvent chez ma grand-mГЁre.", ["suis allГ©", "vais", "allais", "irai"], 2, "B1"], ["Si jвЂ™avais le temps, je ___ davantage.", ["voyagerai", "voyagerais", "voyageais", "ai voyagГ©"], 1, "B1"], ["Le livre ___ tu mвЂ™as parlГ© est passionnant.", ["qui", "que", "dont", "oГ№"], 2, "B1"], ["Il faut que vous ___ avant midi.", ["venez", "veniez", "viendrez", "ГЄtes venus"], 1, "B2"], ["Bien quвЂ™il ___ fatiguГ©, il a continuГ©.", ["est", "soit", "sera", "Г©tait"], 1, "B2"], ["Elle a dit quвЂ™elle ___ le lendemain.", ["vient", "viendra", "viendrait", "est venue"], 2, "B2"], ["Les dГ©cisions ___ hier seront annoncГ©es demain.", ["prenant", "prises", "prendre", "prendues"], 1, "C1"], ["Encore aurait-il fallu que nous ___ au courant.", ["sommes", "soyons", "fussions", "serions"], 2, "C1"], ["Cette proposition est ___ sГ©duisante quвЂ™elle paraisse fragile.", ["aussi", "autant", "trГЁs", "si de"], 0, "C1"], ["Il a agi comme sвЂ™il ___ tout.", ["savait", "a su", "sache", "saura"], 0, "C1"], ["ГЂ supposer quвЂ™une telle mesure ___ adoptГ©e, ses effets seraient limitГ©s.", ["sera", "est", "soit", "Г©tait"], 2, "C2"]], "vocab": [["Pour acheter du pain, je vais Г  laвЂ¦", ["boulangerie", "boucherie", "pharmacie", "librairie"], 0, "A1"], ["В« ГЂ tout Г  lвЂ™heure В» signifieвЂ¦", ["jamais", "dans un moment", "hier soir", "tout de suite"], 1, "A1"], ["Je voudrais ___ une rГ©servation.", ["faire", "prendre", "mettre", "poser"], 0, "A2"], ["Il pleut : prends un ___.", ["chapeau de fГЄte", "parapluie", "maillot", "oreiller"], 1, "A2"], ["Cette solution est peu coГ»teuse : elle estвЂ¦", ["onГ©reuse", "Г©conomique", "rare", "fragile"], 1, "B1"], ["Il a rГ©ussi ___ ses efforts.", ["grГўce Г ", "Г  cause de", "malgrГ© que", "faute"], 0, "B1"], ["В« Pourtant В» exprime gГ©nГ©ralementвЂ¦", ["une consГ©quence", "une opposition", "un but", "une addition"], 1, "B1"], ["Cette proposition mГ©rite dвЂ™ГЄtre ___ avant la dГ©cision.", ["mise en Е“uvre", "prise en compte", "mise au courant", "tenue compte"], 1, "B2"], ["Il a Г©ludГ© la question. Il lвЂ™aвЂ¦", ["rГ©pГ©tГ©e clairement", "Г©vitГ©e sans rГ©pondre directement", "posГ©e Г  nouveau", "rГ©solue"], 1, "B2"], ["Son discours Г©tait concis : il Г©taitвЂ¦", ["bref et prГ©cis", "confus et long", "agressif", "ironique"], 0, "C1"], ["Une affirmation dГ©pourvue de fondement estвЂ¦", ["trГЁs convaincante", "sans preuve solide", "universellement admise", "nuancГ©e"], 1, "C1"], ["Nuancer un propos, cвЂ™estвЂ¦", ["le rendre catГ©gorique", "le prГ©senter avec des rГ©serves", "le supprimer", "le traduire"], 1, "C2"]], "reading": [{"level": "A1вЂ“A2", "title": "Un message", "text": "Salut LГ©a ! Je suis arrivГ© Г  Lyon hier soir. Je loge dans un petit hГґtel prГЁs de la gare. AujourdвЂ™hui, je vais visiter le vieux centre et dГ©jeuner avec mon cousin. Demain, je prendrai le train pour Marseille. ГЂ bientГґt, Hugo.", "qs": [["OГ№ loge Hugo ?", ["Dans un hГґtel prГЁs de la gare", "Chez LГ©a", "ГЂ Marseille", "ГЂ la campagne"], 0], ["Que fera-t-il demain ?", ["Il visitera Lyon", "Il prendra le train pour Marseille", "Il rentrera chez lui", "Il travaillera"], 1]]}, {"level": "B1вЂ“B2", "title": "Le tГ©lГ©travail", "text": "Le tГ©lГ©travail permet de rГ©duire les dГ©placements et dвЂ™organiser plus librement sa journГ©e. Cependant, certains salariГ©s ressentent un isolement plus important et ont du mal Г  sГ©parer vie professionnelle et vie privГ©e. Les spГ©cialistes recommandent de fixer des horaires clairs et de maintenir des Г©changes rГ©guliers avec les collГЁgues.", "qs": [["Quel avantage est mentionnГ© ?", ["Une hausse automatique du salaire", "Moins de dГ©placements", "La disparition des rГ©unions", "Des vacances plus longues"], 1], ["Quelle recommandation est donnГ©e ?", ["Travailler la nuit", "Г‰viter les collГЁgues", "Fixer des horaires clairs", "DГ©mГ©nager"], 2]]}, {"level": "C1вЂ“C2", "title": "La ville et lвЂ™Г©cologie", "text": "La transition Г©cologique urbaine ne saurait se rГ©duire Г  la multiplication des espaces verts ou des pistes cyclables. Elle suppose de repenser la rГ©partition des ressources, des services et des possibilitГ©s de dГ©placement. Une politique ambitieuse doit aussi Г©viter que les quartiers modestes supportent seuls le coГ»t des transformations. Sans concertation, une mesure dite durable risque dвЂ™accentuer les inГ©galitГ©s quвЂ™elle prГ©tend combattre.", "qs": [["Quelle est lвЂ™idГ©e principale ?", ["Les pistes cyclables suffisent", "La transition urbaine exige une approche globale et Г©quitable", "Les budgets sont inutiles", "Les espaces verts doivent disparaГ®tre"], 1], ["Quel risque est soulignГ© ?", ["Une baisse du tourisme", "Une hausse du trafic", "LвЂ™aggravation des inГ©galitГ©s", "La disparition des transports"], 2]]}], "listening": [{"level": "A1вЂ“A2", "title": "Une invitation", "audio": "Bonjour Emma, cвЂ™est Paul. Tu veux venir chez moi samedi soir ? On va prГ©parer une pizza vers dix-neuf heures. Apporte quelque chose Г  boire. Appelle-moi pour confirmer. ГЂ bientГґt !", "qs": [["Quand Paul invite-t-il Emma ?", ["Vendredi soir", "Samedi soir", "Dimanche matin", "Lundi midi"], 1], ["Que doit apporter Emma ?", ["Un dessert", "Une pizza dГ©jГ  cuite", "Quelque chose Г  boire", "Des livres"], 2]]}, {"level": "B1вЂ“B2", "title": "Annonce Г  la gare", "audio": "Mesdames et messieurs, le train pour Bordeaux, prГ©vu Г  14 h 20, partira avec vingt minutes de retard en raison dвЂ™un problГЁme technique. Les voyageurs pour Toulouse sont priГ©s de se rendre au quai numГ©ro quatre. Merci de votre comprГ©hension.", "qs": [["Pourquoi le train est-il retardГ© ?", ["La mГ©tГ©o", "Un problГЁme technique", "Une grГЁve", "Le conducteur"], 1], ["OГ№ vont les voyageurs pour Toulouse ?", ["Quai 2", "Guichet principal", "Quai 4", "Sortie"], 2]]}, {"level": "C1вЂ“C2", "title": "Entretien radiophonique", "audio": "On prГ©sente souvent lвЂ™innovation comme une succession de solutions techniques. Pourtant, une technologie nвЂ™est jamais neutre : elle reflГЁte des choix Г©conomiques, des prioritГ©s politiques et une certaine conception de la sociГ©tГ©. Il faut donc mesurer son efficacitГ©, mais aussi ses effets Г  long terme et la distribution de ses bГ©nГ©fices.", "qs": [["Quelle rГ©serve est formulГ©e ?", ["Toute technologie est inutile", "La technologie reflГЁte aussi des choix de sociГ©tГ©", "Seul le coГ»t compte", "Aucun problГЁme nвЂ™a de solution"], 1], ["Que faut-il examiner ?", ["Seulement la rapiditГ©", "Les effets Г  long terme et la rГ©partition des bГ©nГ©fices", "Le nombre de brevets", "LвЂ™avis des investisseurs"], 1]]}]};
+let seconds=3000,started=false,finished=false,interval=null;
+
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function question(q,section,idx,prefix){let [t,opts,ans,lev]=q;return `<div class="question" data-section="${section}" data-correct="${ans}" data-level="${lev||''}"><div class="qtitle">${idx}. ${esc(t)} <span class="level">${lev||''}</span></div>${opts.map((o,i)=>`<label class="option"><input type="radio" name="${prefix}_${idx}" value="${i}"><span>${esc(o)}</span></label>`).join("")}</div>`;}
+function render(){
+  ["grammar","vocab"].forEach(s=>document.getElementById(s).innerHTML=D[s].map((q,i)=>question(q,s,i+1,s)).join(""));
+  document.getElementById("reading").innerHTML=D.reading.map((r,i)=>`<div class="question"><h3>${i+1}. ${esc(r.title)} <span class="level">${r.level}</span></h3><div class="passage">${esc(r.text)}</div>${r.qs.map((q,j)=>question(q,"reading",j+1,"r"+i)).join("")}</div>`).join("");
+  document.getElementById("listening").innerHTML=D.listening.map((r,i)=>`<div class="question"><h3>${i+1}. ${esc(r.title)} <span class="level">${r.level}</span></h3><p class="hint">Г‰coutez lвЂ™extrait :</p><audio controls preload="metadata" src="${AUDIO[i]}"></audio>${r.qs.map((q,j)=>question(q,"listening",j+1,"l"+i)).join("")}</div>`).join("");
+}
+const AUDIO = ["audio/fr_listening_1.mp3", "audio/fr_listening_2.mp3", "audio/fr_listening_3.mp3"];
+function stopAudio(){document.querySelectorAll('audio').forEach(a=>a.pause());}
+document.addEventListener('play',e=>{document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause()})},true);
+function progress(){let qs=[...document.querySelectorAll("#quiz .question[data-correct]")],n=qs.filter(q=>q.querySelector("input:checked")).length,p=Math.round(n/qs.length*100);document.getElementById("progress").value=p;document.getElementById("progressText").textContent=p+" % В· "+n+"/"+qs.length;}
+function start(){started=true;document.getElementById("intro").classList.add("hidden");document.getElementById("test").classList.remove("hidden");interval=setInterval(()=>{seconds--;document.getElementById("timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");if(seconds<=0)finish(true);},1000);}
+function sectionScore(s){let q=[...document.querySelectorAll(`#quiz .question[data-section="${s}"]`)],n=q.filter(x=>{let a=x.querySelector("input:checked");return a&&+a.value===+x.dataset.correct}).length;return {name:s,correct:n,total:q.length,pct:Math.round(n/q.length*100)};}
+function finish(auto){
+  if(finished)return;
+  if(!auto&&!confirm("Envoyer vos rГ©ponses maintenant ?"))return;
+  finished=true;clearInterval(interval);stopAudio();
+  document.getElementById("test").classList.add("hidden");document.getElementById("result").style.display="block";
+  let ss=["grammar","vocab","reading","listening"].map(sectionScore),total=ss.reduce((a,s)=>a+s.correct,0),max=ss.reduce((a,s)=>a+s.total,0),pct=Math.round(total/max*100),level=pct<25?"A1":pct<42?"A2":pct<59?"B1":pct<75?"B2":pct<89?"C1":"C2";
+  let labels=["Grammaire","Vocabulaire","Lecture","Г‰coute"];ss.forEach((s,i)=>s.label=labels[i]);
+  document.getElementById("level").textContent=level;
+  document.getElementById("resultIntro").textContent="Score objectif : "+total+"/"+max+" ("+pct+" %)."+(auto?" Temps Г©coulГ©.":"");
+  document.getElementById("scores").innerHTML=ss.map(s=>`<div class="score"><span>${s.label}</span><strong>${s.pct}%</strong><small style="color:var(--fg-muted)">${s.correct}/${s.total}</small></div>`).join("")+`<div class="score"><span>Total</span><strong>${pct}%</strong><small style="color:var(--fg-muted)">${total}/${max}</small></div>`;
+  let low=ss.filter(s=>s.pct<60).map(s=>s.label);
+  document.getElementById("recommendations").textContent=low.length?"ГЂ travailler en prioritГ© : "+low.join(", ")+". RГ©servez un cours dвЂ™essai pour confirmer votre niveau.":"Vos rГ©sultats sont Г©quilibrГ©s. Un professeur peut confirmer votre niveau et proposer un programme adaptГ©.";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+render();
+document.getElementById("startBtn").onclick=start;
+document.getElementById("quiz").addEventListener("change",progress);
+document.getElementById("quiz").addEventListener("submit",e=>{e.preventDefault();finish(false);});
+</script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+﻿<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test poziomujД…cy z jД™zyka polskiego вЂ” TessLanguage</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #FAFAF8;
+  --bg-alt: #F0EFEB;
+  --fg: #1A1A1A;
+  --fg-muted: #5C5C5C;
+  --fg-light: #8A8A8A;
+  --accent: #A87CFA;
+  --accent-hover: #8D5BE8;
+  --accent-light: #F4F0FF;
+  --card-bg: #FFFFFF;
+  --card-border: #E5E4E0;
+  --divider: #DDDCD8;
+  --radius: 12px;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111113;
+    --bg-alt: #1A1A1E;
+    --fg: #EAEAEA;
+    --fg-muted: #A0A0A0;
+    --fg-light: #6E6E6E;
+    --accent: #B899F8;
+    --accent-hover: #D1BDFB;
+    --accent-light: #2A194B;
+    --card-bg: #1E1E22;
+    --card-border: #2C2C30;
+    --divider: #2A2A2E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111113;
+  --bg-alt: #1A1A1E;
+  --fg: #EAEAEA;
+  --fg-muted: #A0A0A0;
+  --fg-light: #6E6E6E;
+  --accent: #B899F8;
+  --accent-hover: #D1BDFB;
+  --accent-light: #2A194B;
+  --card-bg: #1E1E22;
+  --card-border: #2C2C30;
+  --divider: #2A2A2E;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--divider);
+  padding: 16px 24px;
+}
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--fg);
+  text-decoration: none;
+}
+.logo span { color: var(--accent); }
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.back-link {
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle:hover { background: var(--bg-alt); color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; }
+
+main {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 0 18px 60px;
+}
+.panel {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin: 20px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--fg);
+}
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.15; margin-bottom: 8px; }
+h2 { font-size: 1.5rem; margin-bottom: 8px; }
+h3 { font-size: 1.125rem; margin-bottom: 12px; }
+.intro, .hint, .notice, .subtitle { color: var(--fg-muted); }
+.subtitle { font-size: 1rem; margin-bottom: 16px; }
+.barrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.125rem;
+  background: var(--accent-light);
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: var(--accent);
+}
+progress {
+  width: 100%;
+  height: 8px;
+  accent-color: var(--accent);
+  border-radius: 4px;
+  background: var(--bg-alt);
+}
+.question { padding: 20px 0; border-top: 1px solid var(--divider); }
+.question:first-of-type { border-top: 0; }
+.qtitle { font-weight: 600; margin-bottom: 12px; color: var(--fg); }
+.level {
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 99px;
+  padding: 2px 8px;
+  margin-left: 8px;
+  font-weight: 650;
+}
+label.option {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  margin: 8px 0;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+label.option:hover { border-color: var(--accent); background: var(--bg-alt); }
+label.option:has(input:checked) { border-color: var(--accent); background: var(--accent-light); }
+input[type=radio] { margin-top: 4px; accent-color: var(--accent); }
+.passage {
+  background: var(--bg-alt);
+  border-left: 3px solid var(--accent);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 14px 0;
+  color: var(--fg-muted);
+}
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.primary { background: var(--accent); color: white; }
+.primary:hover { background: var(--accent-hover); }
+.secondary { background: var(--bg-alt); color: var(--fg); border: 1px solid var(--card-border); }
+.secondary:hover { background: var(--card-border); }
+.actions, .audio-controls { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+.result { display: none; }
+.biglevel { font-size: 3rem; font-family: var(--font-display); color: var(--accent); margin: 10px 0; }
+.scoregrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+.score { background: var(--accent-light); border-radius: 12px; padding: 16px; border: 1px solid var(--card-border); }
+.score strong { display: block; font-size: 1.5rem; font-family: var(--font-display); color: var(--fg); }
+.score span { color: var(--fg-muted); font-size: 0.875rem; }
+.hidden { display: none !important; }
+audio { display: block; width: 100%; margin-top: 12px; }
+footer { text-align: center; color: var(--fg-light); font-size: 0.8125rem; padding: 30px 0; }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../tesslanguage.html" class="logo">Tess<span>Language</span></a>
+    <div class="header-right">
+      <a href="../tesslanguage.html" class="back-link">в†ђ РќР° РіРѕР»РѕРІРЅСѓ СЃР°Р№С‚Сѓ</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Р—РјС–РЅРёС‚Рё С‚РµРјСѓ">
+        <svg id="themeIconSun" viewBox="0 0 24 24" style="display: none;"><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
+        <svg id="themeIconMoon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" fill="none" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div style="margin-bottom: 24px;">
+  <h1>Test poziomujД…cy z jД™zyka polskiego</h1>
+  <div class="subtitle">TessLanguage В· Orientacyjna ocena A1вЂ“C2</div>
+</div>
+
+<section class="panel" id="intro">
+  <h2>Witamy! / Р’С–С‚Р°С”РјРѕ!</h2>
+  <p class="intro" style="margin: 12px 0;">BezpЕ‚atny test sprawdza gramatykД™, sЕ‚ownictwo, rozumienie tekstu i rozumienie ze sЕ‚uchu. Maksymalny czas: 50 minut. Wynik jest orientacyjny i nie stanowi oficjalnego certyfikatu.</p>
+  <ul style="margin: 12px 0 16px 20px;" class="hint">
+    <li>Gramatyka вЂ” 15 pytaЕ„</li>
+    <li>SЕ‚ownictwo вЂ” 12 pytaЕ„</li>
+    <li>Czytanie вЂ” 3 teksty</li>
+    <li>SЕ‚uchanie вЂ” 3 nagrania</li>
+  </ul>
+  <p class="hint">Nagrania sД… wbudowane w test: odtwГіrz je w odtwarzaczu pod kaЕјdym zadaniem (zalecane sЕ‚uchawki). / РђСѓРґС–РѕР·Р°РїРёСЃРё РІР±СѓРґРѕРІР°РЅС– РІ С‚РµСЃС‚ вЂ” СЃР»СѓС…Р°Р№С‚Рµ С—С… Сѓ РїР»РµС”СЂС– РїС–Рґ РєРѕР¶РЅРёРј Р·Р°РІРґР°РЅРЅСЏРј (Р±Р°Р¶Р°РЅРѕ РІ РЅР°РІСѓС€РЅРёРєР°С…).</p>
+  <div class="actions">
+    <button class="primary" id="startBtn">Rozpocznij test / Р РѕР·РїРѕС‡Р°С‚Рё С‚РµСЃС‚</button>
+  </div>
+</section>
+
+<div id="test" class="hidden">
+  <div class="panel">
+    <div class="barrow">
+      <div><strong>PostД™p / РџСЂРѕРіСЂРµСЃ</strong><div class="hint" id="progressText">0 %</div></div>
+      <div class="timer" id="timer">50:00</div>
+    </div>
+    <progress id="progress" value="0" max="100"></progress>
+    <p class="hint" style="margin-top: 8px;">Maksymalny czas: 50 minut / РњР°РєСЃРёРјР°Р»СЊРЅРёР№ С‡Р°СЃ: 50 С…РІРёР»РёРЅ.</p>
+  </div>
+  <form id="quiz">
+    <section class="panel">
+      <h2>1. Gramatyka</h2>
+      <p class="hint">15 pytaЕ„ В· ok. 10 minut</p>
+      <div id="grammar"></div>
+    </section>
+    <section class="panel">
+      <h2>2. SЕ‚ownictwo</h2>
+      <p class="hint">12 pytaЕ„ В· ok. 7 minut</p>
+      <div id="vocab"></div>
+    </section>
+    <section class="panel">
+      <h2>3. Czytanie</h2>
+      <p class="hint">3 teksty В· ok. 10 minut</p>
+      <div id="reading"></div>
+    </section>
+    <section class="panel">
+      <h2>4. SЕ‚uchanie</h2>
+      <p class="hint">3 nagrania В· ok. 10 minut</p>
+      <div id="listening"></div>
+    </section>
+    <section class="panel">
+      <h3>Gotowe do wysЕ‚ania? / Р“РѕС‚РѕРІРѕ РґРѕ РІС–РґРїСЂР°РІРєРё?</h3>
+      <p class="hint" style="margin-bottom: 12px;">Poprawne odpowiedzi nie sД… pokazywane przed wysЕ‚aniem. / РџСЂР°РІРёР»СЊРЅС– РІС–РґРїРѕРІС–РґС– РЅРµ РІС–РґРѕР±СЂР°Р¶Р°СЋС‚СЊСЃСЏ РґРѕ РІС–РґРїСЂР°РІРєРё.</p>
+      <button class="primary" type="submit">ZakoЕ„cz i zobacz wynik / Р—Р°РІРµСЂС€РёС‚Рё С– РїРѕР±Р°С‡РёС‚Рё СЂРµР·СѓР»СЊС‚Р°С‚</button>
+    </section>
+  </form>
+</div>
+
+<section class="panel result" id="result">
+  <h2>TwГіj wynik / Р’Р°С€ СЂРµР·СѓР»СЊС‚Р°С‚</h2>
+  <div class="biglevel" id="level"></div>
+  <p id="resultIntro" style="margin-bottom: 16px;"></p>
+  <div class="scoregrid" id="scores"></div>
+  <h3 style="margin-top: 24px;">Zalecenia / Р РµРєРѕРјРµРЅРґР°С†С–С—</h3>
+  <p id="recommendations" style="margin-bottom: 16px; color: var(--fg-muted);"></p>
+  <p class="notice" style="margin-bottom: 20px;">Wynik orientacyjny, nie jest oficjalnym certyfikatem. / РћСЂС–С”РЅС‚РѕРІРЅРёР№ СЂРµР·СѓР»СЊС‚Р°С‚, РЅРµ С” РѕС„С–С†С–Р№РЅРёРј СЃРµСЂС‚РёС„С–РєР°С‚РѕРј.</p>
+  <div class="actions">
+    <button class="primary" id="cta" onclick="window.location.href='https://bookon.ua/s/tess.language'">UmГіw bezpЕ‚atnД… lekcjД™ prГіbnД… / Р—Р°РїРёСЃР°С‚РёСЃСЏ РЅР° Р±РµР·РєРѕС€С‚РѕРІРЅРµ РїСЂРѕР±РЅРµ Р·Р°РЅСЏС‚С‚СЏ</button>
+    <button class="secondary" onclick="window.print()">Zapisz jako PDF / Р”СЂСѓРє</button>
+  </div>
+  <p class="notice" id="ctaNote" style="margin-top: 12px;"></p>
+</section>
+</main>
+
+<footer>TessLanguage В· Test poziomujД…cy z jД™zyka polskiego В· Wynik orientacyjny</footer>
+
+<script>
+// Theme switcher logic
+const themeToggle = document.getElementById('themeToggle');
+const themeIconSun = document.getElementById('themeIconSun');
+const themeIconMoon = document.getElementById('themeIconMoon');
+
+function updateThemeIcons(isDark) {
+  if(isDark) {
+    themeIconSun.style.display = 'block';
+    themeIconMoon.style.display = 'none';
+  } else {
+    themeIconSun.style.display = 'none';
+    themeIconMoon.style.display = 'block';
+  }
+}
+
+const savedTheme = localStorage.getItem('tess_theme');
+if (savedTheme) {
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcons(savedTheme === 'dark');
+} else {
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  updateThemeIcons(prefersDark);
+}
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('tess_theme', newTheme);
+  updateThemeIcons(newTheme === 'dark');
+});
+
+const D={"lang": "pl", "title": "Test poziomujД…cy z jД™zyka polskiego", "subtitle": "TessLanguage В· Orientacyjna ocena A1вЂ“C2", "intro": "BezpЕ‚atny test sprawdza gramatykД™, sЕ‚ownictwo, rozumienie tekstu i rozumienie ze sЕ‚uchu. Maksymalny czas: 50 minut. Wynik jest orientacyjny i nie stanowi oficjalnego certyfikatu.", "grammar": [["Mam ___ siostrД™.", ["mЕ‚ody", "mЕ‚oda", "mЕ‚odД…", "mЕ‚ode"], 2, "A1"], ["Oni ___ w Warszawie.", ["mieszka", "mieszkajД…", "mieszkamy", "mieszkasz"], 1, "A1"], ["Nie mam dzisiaj ___ czasu.", ["Ејaden", "Ејadnego", "Ејadnym", "Ејadna"], 1, "A2"], ["Wczoraj Anna ___ do pracy autobusem.", ["jechaЕ‚a", "jechaД‡", "jedzie", "pojedzie"], 0, "A2"], ["Kiedy byЕ‚em dzieckiem, czД™sto ___ u babci.", ["zostaЕ‚em", "bywaЕ‚em", "zostanД™", "byД‡"], 1, "B1"], ["Gdybym miaЕ‚ wiД™cej pieniД™dzy, ___ samochГіd.", ["kupiД™", "kupiЕ‚em", "kupiЕ‚bym", "kupujД™"], 2, "B1"], ["To jest kolega, ___ poznaЕ‚em na studiach.", ["ktГіry", "ktГіrego", "ktГіremu", "ktГіrym"], 1, "B1"], ["ZaleЕјy mi na tym, ЕјebyЕ› ___ punktualnie.", ["przychodzisz", "przyszedЕ‚", "przyjdziesz", "przychodziД‡"], 1, "B2"], ["Mimo Ејe ___ zmД™czony, dokoЕ„czyЕ‚ projekt.", ["byЕ‚", "bД™dzie", "jest", "byЕ‚by"], 0, "B2"], ["PowiedziaЕ‚a, Ејe ___ nastД™pnego dnia.", ["przyjdzie", "przyszЕ‚a", "przychodzi", "przyjЕ›Д‡"], 0, "B2"], ["Dokumenty ___ wczoraj zostanД… opublikowane jutro.", ["przygotowujД…ce", "przygotowane", "przygotowaД‡", "przygotowujД…c"], 1, "C1"], ["Gdyby nie jego pomoc, ___ zadania na czas.", ["nie skoЕ„czymy", "nie skoЕ„czyliЕ›my", "nie skoЕ„czylibyЕ›my", "nie koЕ„czymy"], 2, "C1"], ["Nie sposГіb przeceniД‡ znaczenia tej decyzji вЂ” jej znaczenie jestвЂ¦", ["znikome", "bardzo duЕјe", "nieistotne", "maЕ‚e"], 1, "C1"], ["ZachowaЕ‚ siД™ tak, jakby nic siД™ nie ___.", ["staЕ‚o", "stanie", "staje", "staД‡"], 0, "C1"], ["NiezaleЕјnie od tego, jakie rozwiД…zanie ___, trzeba uwzglД™dniД‡ konsekwencje.", ["wybierzemy", "wybraliЕ›my", "wybieraliЕ›my", "wybierajД…c"], 0, "C2"]], "vocab": [["Chleb kupujemy wвЂ¦", ["aptece", "piekarni", "ksiД™garni", "rzeЕєni"], 1, "A1"], ["вЂћDo zobaczeniaвЂќ mГіwimy, gdyвЂ¦", ["Ејegnamy siД™, liczД…c na kolejne spotkanie", "przepraszamy", "skЕ‚adamy Ејyczenia", "prosimy o rachunek"], 0, "A1"], ["ChciaЕ‚bym ___ stolik dla dwГіch osГіb.", ["zarezerwowaД‡", "zatrzymaД‡", "zachowaД‡ siД™", "przetrzymaД‡"], 0, "A2"], ["Kiedy pada deszcz, warto wziД…Д‡вЂ¦", ["rД™cznik", "parasol", "Е‚yЕјkД™", "poduszkД™"], 1, "A2"], ["To rozwiД…zanie jest niedrogie, czyliвЂ¦", ["kosztowne", "ekonomiczne", "skomplikowane", "rzadkie"], 1, "B1"], ["Nie zdaЕ‚ egzaminu ___ braku przygotowania.", ["dziД™ki", "z powodu", "pomimo", "w celu"], 1, "B1"], ["SЕ‚owo вЂћjednakвЂќ najczД™Е›ciej wyraЕјaвЂ¦", ["kontrast", "przyczynД™", "cel", "kolejnoЕ›Д‡"], 0, "B1"], ["Warto wziД…Д‡ tД™ opiniД™ ___ przed podjД™ciem decyzji.", ["pod uwagД™", "na pamiД™Д‡", "do siebie", "w stronД™"], 0, "B2"], ["вЂћUnikaД‡ odpowiedziвЂќ znaczyвЂ¦", ["odpowiadaД‡ szczegГіЕ‚owo", "nie odpowiadaД‡ wprost", "powtarzaД‡ pytanie", "zgodziД‡ siД™"], 1, "B2"], ["WypowiedЕє zwiД™zЕ‚a jestвЂ¦", ["krГіtka i treЕ›ciwa", "dЕ‚uga i chaotyczna", "niezrozumiaЕ‚a", "obraЕєliwa"], 0, "C1"], ["вЂћBezzasadny zarzutвЂќ to zarzutвЂ¦", ["oparty na dowodach", "pozbawiony uzasadnienia", "powszechnie uznany", "uprzejmy"], 1, "C1"], ["ZniuansowaД‡ opiniД™, czyliвЂ¦", ["przedstawiД‡ jД… kategorycznie", "uwzglД™dniД‡ zЕ‚oЕјonoЕ›Д‡ i zastrzeЕјenia", "odrzuciД‡", "powtГіrzyД‡ dosЕ‚ownie"], 1, "C2"]], "reading": [{"level": "A1вЂ“A2", "title": "WiadomoЕ›Д‡", "text": "CzeЕ›Д‡, Kasiu! PrzyjechaЕ‚em do Krakowa wczoraj wieczorem. Mieszkam w maЕ‚ym hotelu blisko dworca. Dzisiaj zwiedzД™ stare miasto i zjem obiad z kuzynem. Jutro pojadД™ pociД…giem do WrocЕ‚awia. Do zobaczenia, Marek.", "qs": [["Gdzie mieszka Marek?", ["U kuzyna", "W hotelu blisko dworca", "We WrocЕ‚awiu", "Na wsi"], 1], ["Co zrobi jutro?", ["Zwiedzi KrakГіw", "Pojedzie pociД…giem do WrocЕ‚awia", "PГіjdzie do pracy", "Spotka KasiД™"], 1]]}, {"level": "B1вЂ“B2", "title": "Praca zdalna", "text": "Praca zdalna pozwala ograniczyД‡ dojazdy i lepiej organizowaД‡ dzieЕ„. NiektГіrzy pracownicy zauwaЕјajД… jednak, Ејe trudniej im oddzieliД‡ Ејycie zawodowe od prywatnego i rzadziej rozmawiajД… ze wspГіЕ‚pracownikami. SpecjaliЕ›ci radzД… ustalaД‡ wyraЕєne godziny pracy oraz regularnie kontaktowaД‡ siД™ z zespoЕ‚em.", "qs": [["Jaka zaleta zostaЕ‚a wymieniona?", ["Automatyczna podwyЕјka", "Mniej dojazdГіw", "Brak obowiД…zkГіw", "DЕ‚uЕјszy urlop"], 1], ["Co radzД… specjaliЕ›ci?", ["PracowaД‡ w nocy", "UnikaД‡ zespoЕ‚u", "UstalaД‡ wyraЕєne godziny pracy", "ZrezygnowaД‡ z internetu"], 2]]}, {"level": "C1вЂ“C2", "title": "Miasto i ekologia", "text": "Ekologiczna transformacja miasta nie moЕјe ograniczaД‡ siД™ do sadzenia drzew i budowania Е›cieЕјek rowerowych. Wymaga przemyЕ›lenia sposobu rozdziaЕ‚u zasobГіw, usЕ‚ug publicznych i moЕјliwoЕ›ci przemieszczania siД™. Polityka musi rГіwnieЕј zapobiegaД‡ sytuacji, w ktГіrej koszty zmian ponoszД… przede wszystkim najuboЕјsze dzielnice. Bez konsultacji rozwiД…zanie przedstawiane jako zrГіwnowaЕјone moЕјe pogЕ‚Д™biД‡ nierГіwnoЕ›ci, ktГіre miaЕ‚o ograniczaД‡.", "qs": [["Jaka jest gЕ‚Гіwna myЕ›l tekstu?", ["ЕљcieЕјki rowerowe wystarczД…", "Transformacja wymaga caЕ‚oЕ›ciowego i sprawiedliwego podejЕ›cia", "BudЕјety nie majД… znaczenia", "NaleЕјy zlikwidowaД‡ zieleЕ„"], 1], ["Jakie zagroЕјenie wskazano?", ["Spadek turystyki", "PogЕ‚Д™bienie nierГіwnoЕ›ci", "Zanik transportu", "WiД™cej parkГіw"], 1]]}], "listening": [{"level": "A1вЂ“A2", "title": "Zaproszenie", "audio": "CzeЕ›Д‡, Olu, tu PaweЕ‚. Czy przyjdziesz do mnie w sobotД™ wieczorem? Zrobimy pizzД™ okoЕ‚o dziewiД™tnastej. WeЕє coЕ› do picia. ZadzwoЕ„, Ејeby potwierdziД‡. Do zobaczenia!", "qs": [["Kiedy PaweЕ‚ zaprasza OlД™?", ["W piД…tek rano", "W sobotД™ wieczorem", "W niedzielД™ w poЕ‚udnie", "W poniedziaЕ‚ek"], 1], ["Co ma przynieЕ›Д‡ Ola?", ["KsiД…Ејki", "Gotowy obiad", "CoЕ› do picia", "Bilety"], 2]]}, {"level": "B1вЂ“B2", "title": "Komunikat na dworcu", "audio": "Uwaga, pasaЕјerowie. PociД…g do GdaЕ„ska, ktГіry miaЕ‚ odjechaД‡ o czternastej dwadzieЕ›cia, bД™dzie opГіЕєniony o okoЕ‚o dwadzieЕ›cia minut z powodu usterki technicznej. PasaЕјerГіw jadД…cych do Poznania prosimy o przejЕ›cie na peron numer cztery. DziД™kujemy za cierpliwoЕ›Д‡.", "qs": [["Dlaczego pociД…g jest opГіЕєniony?", ["Z powodu pogody", "Z powodu usterki technicznej", "Z powodu braku pasaЕјerГіw", "Z powodu remontu"], 1], ["Na ktГіry peron majД… iЕ›Д‡ pasaЕјerowie do Poznania?", ["Drugi", "Trzeci", "Czwarty", "PiД…ty"], 2]]}, {"level": "C1вЂ“C2", "title": "Wywiad radiowy", "audio": "Innowacje czД™sto przedstawia siД™ jako rozwiД…zania techniczne sЕ‚uЕјД…ce rozwiД…zywaniu zЕ‚oЕјonych problemГіw. Technologia nie jest jednak neutralna: odzwierciedla wybory gospodarcze, priorytety polityczne i okreЕ›lonД… wizjД™ spoЕ‚eczeЕ„stwa. OceniajД…c innowacjД™, trzeba braД‡ pod uwagД™ nie tylko skutecznoЕ›Д‡, lecz takЕјe dЕ‚ugofalowe konsekwencje i sposГіb podziaЕ‚u korzyЕ›ci.", "qs": [["JakД… uwagД™ formuЕ‚uje rozmГіwca?", ["KaЕјda technologia jest bezuЕјyteczna", "Technologia odzwierciedla takЕјe wybory spoЕ‚eczne", "Liczy siД™ wyЕ‚Д…cznie koszt", "ProblemГіw nie da siД™ rozwiД…zaД‡"], 1], ["Co naleЕјy oceniaД‡ oprГіcz skutecznoЕ›ci?", ["Tylko szybkoЕ›Д‡", "DЕ‚ugofalowe skutki i podziaЕ‚ korzyЕ›ci", "LiczbД™ patentГіw", "WyЕ‚Д…cznie opiniД™ inwestorГіw"], 1]]}]};
+let seconds=3000,started=false,finished=false,interval=null;
+
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function question(q,section,idx,prefix){let [t,opts,ans,lev]=q;return `<div class="question" data-section="${section}" data-correct="${ans}" data-level="${lev||''}"><div class="qtitle">${idx}. ${esc(t)} <span class="level">${lev||''}</span></div>${opts.map((o,i)=>`<label class="option"><input type="radio" name="${prefix}_${idx}" value="${i}"><span>${esc(o)}</span></label>`).join("")}</div>`;}
+function render(){
+  ["grammar","vocab"].forEach(s=>document.getElementById(s).innerHTML=D[s].map((q,i)=>question(q,s,i+1,s)).join(""));
+  document.getElementById("reading").innerHTML=D.reading.map((r,i)=>`<div class="question"><h3>${i+1}. ${esc(r.title)} <span class="level">${r.level}</span></h3><div class="passage">${esc(r.text)}</div>${r.qs.map((q,j)=>question(q,"reading",j+1,"r"+i)).join("")}</div>`).join("");
+  document.getElementById("listening").innerHTML=D.listening.map((r,i)=>`<div class="question"><h3>${i+1}. ${esc(r.title)} <span class="level">${r.level}</span></h3><p class="hint">PosЕ‚uchaj nagrania:</p><audio controls preload="metadata" src="${AUDIO[i]}"></audio>${r.qs.map((q,j)=>question(q,"listening",j+1,"l"+i)).join("")}</div>`).join("");
+}
+const AUDIO = ["audio/pl_listening_1.mp3", "audio/pl_listening_2.mp3", "audio/pl_listening_3.mp3"];
+function stopAudio(){document.querySelectorAll('audio').forEach(a=>a.pause());}
+document.addEventListener('play',e=>{document.querySelectorAll('audio').forEach(a=>{if(a!==e.target)a.pause()})},true);
+function progress(){let qs=[...document.querySelectorAll("#quiz .question[data-correct]")],n=qs.filter(q=>q.querySelector("input:checked")).length,p=Math.round(n/qs.length*100);document.getElementById("progress").value=p;document.getElementById("progressText").textContent=p+" % В· "+n+"/"+qs.length;}
+function start(){started=true;document.getElementById("intro").classList.add("hidden");document.getElementById("test").classList.remove("hidden");interval=setInterval(()=>{seconds--;document.getElementById("timer").textContent=String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");if(seconds<=0)finish(true);},1000);}
+function sectionScore(s){let q=[...document.querySelectorAll(`#quiz .question[data-section="${s}"]`)],n=q.filter(x=>{let a=x.querySelector("input:checked");return a&&+a.value===+x.dataset.correct}).length;return {name:s,correct:n,total:q.length,pct:Math.round(n/q.length*100)};}
+function finish(auto){
+  if(finished)return;
+  if(!auto&&!confirm("WysЕ‚aД‡ odpowiedzi?"))return;
+  finished=true;clearInterval(interval);stopAudio();
+  document.getElementById("test").classList.add("hidden");document.getElementById("result").style.display="block";
+  let ss=["grammar","vocab","reading","listening"].map(sectionScore),total=ss.reduce((a,s)=>a+s.correct,0),max=ss.reduce((a,s)=>a+s.total,0),pct=Math.round(total/max*100),level=pct<25?"A1":pct<42?"A2":pct<59?"B1":pct<75?"B2":pct<89?"C1":"C2";
+  let labels=["Gramatyka","SЕ‚ownictwo","Czytanie","SЕ‚uchanie"];ss.forEach((s,i)=>s.label=labels[i]);
+  document.getElementById("level").textContent=level;
+  document.getElementById("resultIntro").textContent="Wynik obiektywny: "+total+"/"+max+" ("+pct+" %)."+(auto?" UpЕ‚ynД…Е‚ czas.":"");
+  document.getElementById("scores").innerHTML=ss.map(s=>`<div class="score"><span>${s.label}</span><strong>${s.pct}%</strong><small style="color:var(--fg-muted)">${s.correct}/${s.total}</small></div>`).join("")+`<div class="score"><span>ЕЃД…cznie</span><strong>${pct}%</strong><small style="color:var(--fg-muted)">${total}/${max}</small></div>`;
+  let low=ss.filter(s=>s.pct<60).map(s=>s.label);
+  document.getElementById("recommendations").textContent=low.length?"Do poprawy w pierwszej kolejnoЕ›ci: "+low.join(", ")+". UmГіw siД™ na lekcjД™ prГіbnД…, aby potwierdziД‡ poziom.":"Wyniki sД… wyrГіwnane. Lektor moЕјe potwierdziД‡ poziom i zaproponowaД‡ plan nauki.";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+render();
+document.getElementById("startBtn").onclick=start;
+document.getElementById("quiz").addEventListener("change",progress);
+document.getElementById("quiz").addEventListener("submit",e=>{e.preventDefault();finish(false);});
+</script>
+</body>
+</html>

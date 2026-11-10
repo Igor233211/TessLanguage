@@ -1,0 +1,42 @@
+=== en_listening_1.mp3 ===
+Anna: Hi Tom, it's Anna. Are we still meeting tomorrow morning?
+Tom: Yes, of course. Is ten fifteen OK for you?
+Anna: Hmm, ten fifteen is a bit early for me. Can we say ten thirty?
+Tom: Ten thirty is fine. Shall we meet outside the station?
+Anna: It's going to be cold tomorrow. Let's meet in the café next to the library. The one with the green door.
+Tom: Great idea. But I'm taking the number twelve bus, and it's often late in the morning. If my bus is delayed, I'll send you a message.
+Anna: No problem. I'll order a coffee and wait for you. See you tomorrow!
+Tom: See you!
+
+=== en_listening_2.mp3 ===
+Good morning, everyone, and welcome to the Language Teaching Conference. Before we begin, here are a few important changes to today's programme. The morning sessions will take place as planned in the Main Hall. However, the afternoon session, Teaching Vocabulary Through Stories, has moved from Room Five to Room Twelve on the second floor, because Room Five is needed for a technical demonstration. The speaker and the start time, two o'clock, remain the same. If you plan to attend the afternoon session, please register at the front desk before it begins, as places are limited. You don't need a new ticket. Your conference badge is enough. Finally, lunch will be provided for all participants in the café on the ground floor from half past twelve. Recordings of selected sessions will be available online next week. Thank you, and enjoy the conference.
+
+=== en_listening_3.mp3 ===
+Host: Welcome back to Learning Matters. My guest today is Doctor Helen Carter, who researches digital education. Helen, schools have invested heavily in technology over the past decade. Has it actually improved learning?
+Dr Helen Carter: That's the question everyone wants a simple answer to, and I'm afraid there isn't one. Technology on its own doesn't improve or damage learning. What makes the difference is how a tool is used: by whom, for what purpose, and with what kind of support. A tablet can be a powerful way to practise pronunciation, or it can simply be a very expensive notebook.
+Host: So you wouldn't argue that digital tools should replace traditional teaching?
+Dr Helen Carter: Not at all. Nor would I suggest banning them. Teachers remain central. Good tools extend what a skilled teacher can do, rather than substituting for it.
+Host: What concerns you most at the moment?
+Dr Helen Carter: Access. We tend to assume that every student has a fast, reliable internet connection and a decent device at home. In reality, many don't. When homework depends on technology that some families simply can't rely on, we risk widening the very gaps we hoped to close.
+Host: So what would you recommend to schools?
+Dr Helen Carter: Start with the learning goal, not the product. Before adopting any tool, ask what students should be able to do afterwards, and then evaluate honestly whether the tool helps them get there. If it doesn't, it doesn't matter how impressive it looks, or how many other schools are using it.
+Host: Doctor Helen Carter, thank you very much.
+
+=== fr_listening_1.mp3 ===
+Bonjour Emma, c’est Paul. Tu veux venir chez moi samedi soir ? On va préparer une pizza vers dix-neuf heures. Apporte quelque chose à boire. Appelle-moi pour confirmer. À bientôt !
+
+=== fr_listening_2.mp3 ===
+Mesdames et messieurs, le train pour Bordeaux, prévu à quatorze heures vingt, partira avec vingt minutes de retard en raison d’un problème technique. Les voyageurs pour Toulouse sont priés de se rendre au quai numéro quatre. Merci de votre compréhension.
+
+=== fr_listening_3.mp3 ===
+On présente souvent l’innovation comme une succession de solutions techniques. Pourtant, une technologie n’est jamais neutre : elle reflète des choix économiques, des priorités politiques et une certaine conception de la société. Il faut donc mesurer son efficacité, mais aussi ses effets à long terme et la distribution de ses bénéfices.
+
+=== pl_listening_1.mp3 ===
+Cześć, Olu, tu Paweł. Czy przyjdziesz do mnie w sobotę wieczorem? Zrobimy pizzę około dziewiętnastej. Weź coś do picia. Zadzwoń, żeby potwierdzić. Do zobaczenia!
+
+=== pl_listening_2.mp3 ===
+Uwaga, pasażerowie. Pociąg do Gdańska, który miał odjechać o czternastej dwadzieścia, będzie opóźniony o około dwadzieścia minut z powodu usterki technicznej. Pasażerów jadących do Poznania prosimy o przejście na peron numer cztery. Dziękujemy za cierpliwość.
+
+=== pl_listening_3.mp3 ===
+Innowacje często przedstawia się jako rozwiązania techniczne służące rozwiązywaniu złożonych problemów. Technologia nie jest jednak neutralna: odzwierciedla wybory gospodarcze, priorytety polityczne i określoną wizję społeczeństwa. Oceniając innowację, trzeba brać pod uwagę nie tylko skuteczność, lecz także długofalowe konsekwencje i sposób podziału korzyści.
+
