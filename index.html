@@ -1,7 +1,11 @@
-﻿<title>TessLanguage</title>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TessLanguage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: full-width sections, max-width inner containers, vertical rhythm via gap */
 :root {
   --bg: #FAFAF8;
   --bg-alt: #F0EFEB;
@@ -83,7 +87,6 @@ h1, h2, h3, h4 {
   padding-inline: 24px;
 }
 
-/* в”Ђв”Ђ Header в”Ђв”Ђ */
 .site-header {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
@@ -145,7 +148,7 @@ h1, h2, h3, h4 {
 .btn:active { transform: scale(.97); }
 .btn--primary {
   background: var(--accent);
-  color: #000; /* Колір тексту змінено */
+  color: #000;
 }
 .btn--primary:hover, .btn--primary:focus-visible {
   background: var(--accent-hover);
@@ -183,7 +186,6 @@ nav .btn--primary { color: #000; }
   height: 20px;
 }
 
-/* Mobile menu */
 .burger {
   display: none;
   background: none;
@@ -233,7 +235,6 @@ nav .btn--primary { color: #000; }
   .burger { display: flex; }
 }
 
-/* в”Ђв”Ђ Hero в”Ђв”Ђ */
 .hero {
   padding: 80px 0 60px;
 }
@@ -332,7 +333,6 @@ nav .btn--primary { color: #000; }
   }
 }
 
-/* в”Ђв”Ђ Section в”Ђв”Ђ */
 .section {
   padding-block: var(--section-gap);
 }
@@ -365,7 +365,6 @@ nav .btn--primary { color: #000; }
   margin-inline: auto;
 }
 
-/* в”Ђв”Ђ Languages grid в”Ђв”Ђ */
 .lang-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -413,7 +412,6 @@ nav .btn--primary { color: #000; }
   letter-spacing: .03em;
 }
 
-/* в”Ђв”Ђ Advantages в”Ђв”Ђ */
 .adv-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -455,7 +453,6 @@ nav .btn--primary { color: #000; }
   line-height: 1.6;
 }
 
-/* в”Ђв”Ђ Formats в”Ђв”Ђ */
 .format-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -530,7 +527,6 @@ nav .btn--primary { color: #000; }
   color: var(--fg-light);
 }
 
-/* ── Teachers ── */
 .teacher-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(280px, 320px));
@@ -621,7 +617,6 @@ nav .btn--primary { color: #000; }
   font-weight: 500;
 }
 
-/* в”Ђв”Ђ Steps в”Ђв”Ђ */
 .steps {
   display: flex;
   flex-direction: column;
@@ -661,9 +656,6 @@ nav .btn--primary { color: #000; }
   height: calc(100% + 40px - 44px);
   background: var(--divider);
 }
-.step:not(:last-child) {
-  /* let the line extend */
-}
 .step-content h3 {
   font-size: 1.125rem;
   margin-bottom: 6px;
@@ -675,7 +667,6 @@ nav .btn--primary { color: #000; }
   line-height: 1.65;
 }
 
-/* ── Trial form ── */
 .trial-section {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('tessLanguage_photos/photo_5355338389051350993_y.jpg') center/cover no-repeat;
   color: #fff;
@@ -745,7 +736,6 @@ nav .btn--primary { color: #000; }
   margin-bottom: 8px;
 }
 
-/* в”Ђв”Ђ FAQ в”Ђв”Ђ */
 .faq-list {
   display: flex;
   flex-direction: column;
@@ -800,7 +790,6 @@ nav .btn--primary { color: #000; }
   line-height: 1.7;
 }
 
-/* в”Ђв”Ђ Footer в”Ђв”Ђ */
 .site-footer {
   background: var(--bg-alt);
   padding-block: 56px 32px;
@@ -872,7 +861,6 @@ nav .btn--primary { color: #000; }
 }
 .footer-contacts a:hover { color: var(--accent); }
 
-/* в”Ђв”Ђ Focus в”Ђв”Ђ */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -881,7 +869,6 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* в”Ђв”Ђ Scroll animations в”Ђв”Ђ */
 @media (prefers-reduced-motion: no-preference) {
   .fade-in {
     opacity: 0;
@@ -897,9 +884,8 @@ select:focus-visible {
   .fade-in { opacity: 1; transform: none; }
 }
 </style>
-
-
-<!-- Header -->
+</head>
+<body>
 <header class="site-header" id="header">
   <div class="header-inner">
     <a href="#" class="logo" style="display: flex; align-items: center; gap: 8px;">
@@ -938,7 +924,6 @@ select:focus-visible {
   <a href="https://bookon.ua/s/tess.language" class="btn btn--primary" target="_blank" onclick="closeMenu()">Записатися на пробне заняття</a>
 </div>
 
-<!-- Hero -->
 <section class="hero">
   <div class="container">
     <div class="hero-inner fade-in">
@@ -950,7 +935,6 @@ select:focus-visible {
           <a href="https://bookon.ua/s/tess.language" class="btn btn--primary" target="_blank">Записатися на пробне заняття</a>
           <a href="#formats" class="btn btn--outline">Дізнатися про формати</a>
         </div>
-        
       </div>
       <div class="hero-image-collage">
         <img src="tesslanguage_photos\photo_5355338389051350995_y.jpg" alt="Фото 1">
@@ -962,18 +946,15 @@ select:focus-visible {
   </div>
 </section>
 
-<!-- Languages -->
 <section class="section section--alt" id="languages">
   <div class="container">
     <div class="section-header section-header--center fade-in">
       <p class="section-label">Напрямки</p>
       <h2 class="section-title">Оберіть свою мову</h2>
-      
     </div>
     <div class="lang-grid">
       <div class="lang-card fade-in">
         <h3>Англійська</h3>
-        <!-- тут текст описания -->
         <p></p>
         <div class="lang-levels">
           <span>A1–B2</span>
@@ -982,7 +963,6 @@ select:focus-visible {
       </div>
       <div class="lang-card fade-in">
         <h3>Французька</h3>
-        <!-- тут текст описания -->
         <p></p>
         <div class="lang-levels">
           <span>A1–B2</span>
@@ -991,7 +971,6 @@ select:focus-visible {
       </div>
       <div class="lang-card fade-in">
         <h3>Італійська</h3>
-        <!-- тут текст описания -->
         <p></p>
         <div class="lang-levels">
           <span>A1–B2</span>
@@ -1000,7 +979,6 @@ select:focus-visible {
       </div>
       <div class="lang-card fade-in">
         <h3>Польська</h3>
-        <!-- тут текст описания -->
         <p></p>
         <div class="lang-levels">
           <span>A1–B2</span>
@@ -1009,7 +987,6 @@ select:focus-visible {
       </div>
       <div class="lang-card fade-in">
         <h3>Німецька</h3>
-        <!-- тут текст описания -->
         <p></p>
         <div class="lang-levels">
           <span>A1–B2</span>
@@ -1020,56 +997,43 @@ select:focus-visible {
   </div>
 </section>
 
-<!-- Tests Catalog Section -->
 <section class="section" id="tests">
   <div class="container">
     <div class="section-header section-header--center fade-in">
-     
       <h2 class="section-title">Пройти безкоштовний тест на рівень знання мов</h2>
       <p class="section-subtitle">Оберіть мову, щоб перевірити свій поточний рівень за стандартом CEFR (A1–C2). Тест включає граматику, словниковий запас, читання та аудіювання.</p>
     </div>
     <div class="lang-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-
       <div class="lang-card fade-in">
         <div class="lang-flag"></div>
         <h3>Англійська мова</h3>
         <p>Комплексний тест на визначення рівня англійської (A1–C2): граматика, лексика, читання, аудіювання та опціональне письмо.</p>
-        <div class="lang-levels">
-        </div>
+        <div class="lang-levels"></div>
         <a href="tests/tesslanguage_english_placement_test.html" class="btn btn--primary btn--small" style="margin-top: 16px;">Пройти тест →</a>
       </div>
-
       <div class="lang-card fade-in">
         <div class="lang-flag"></div>
         <h3>Французька мова</h3>
         <p>Test de niveau de français: перевірте свої знання французької граматики, лексики, навичок читання та аудіювання.</p>
-        <div class="lang-levels">
-       
-        </div>
+        <div class="lang-levels"></div>
         <a href="tests/tesslanguage_test_francais.html" class="btn btn--primary btn--small" style="margin-top: 16px;">Пройти тест →</a>
       </div>
-
       <div class="lang-card fade-in">
         <div class="lang-flag"></div>
         <h3>Польська мова</h3>
         <p>Test poziomujący z języka polskiego: оцініть рівень володіння польською мовою з детальним аналізом навичок.</p>
-        <div class="lang-levels">
-          
-        </div>
+        <div class="lang-levels"></div>
         <a href="tests/tesslanguage_test_polski.html" class="btn btn--primary btn--small" style="margin-top: 16px;">Пройти тест →</a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- Advantages -->
 <section class="section" id="advantages">
   <div class="container">
     <div class="section-header section-header--center fade-in">
       <p class="section-label">Чому ми?</p>
       <h2 class="section-title">Переваги TessLanguage</h2>
-      
     </div>
     <div class="adv-grid">
       <div class="adv-item fade-in">
@@ -1104,7 +1068,7 @@ select:focus-visible {
           <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
         <div>
-          <h3>Онлайн навчання </h3>
+          <h3>Онлайн навчання</h3>
           <p>Займайтеся у комфортних умовах з будь-якої точки світу</p>
         </div>
       </div>
@@ -1114,7 +1078,7 @@ select:focus-visible {
         </div>
         <div>
           <h3>Авторська методика</h3>
-          <p>Комунікативний підхід з елементами гейміфікаії для цікавого навчання</p>
+          <p>Комунікативний підхід з елементами гейміфікації для цікавого навчання</p>
         </div>
       </div>
       <div class="adv-item fade-in">
@@ -1130,7 +1094,6 @@ select:focus-visible {
   </div>
 </section>
 
-<!-- Packages -->
 <section class="section section--alt" id="formats">
   <div class="container">
     <div class="section-header section-header--center fade-in">
@@ -1138,7 +1101,6 @@ select:focus-visible {
       <p class="section-subtitle">Оберіть кращий варіант для себе зі знижками при оплаті за курс</p>
     </div>
     <div class="format-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-
       <div class="format-card fade-in">
         <div class="format-icon">
           <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
@@ -1190,7 +1152,7 @@ select:focus-visible {
       </div>
 
       <div class="format-card fade-in">
-        <h3>Курс Німецької <span style="font-size: .8em; color: var(--fg-light); font-weight: normal;"></span></h3>
+        <h3>Курс Німецької</h3>
         <p>
           <span style="display:block; margin-bottom:4px;">За 3 місяці: <strong>9&nbsp;120&nbsp;₴</strong> <strong style="color: var(--accent);">(знижка&nbsp;5%)</strong></span>
           <span style="display:block;">За рік: <strong>32&nbsp;640&nbsp;₴</strong> <strong style="color: var(--accent);">(знижка&nbsp;15%)</strong></span>
@@ -1198,26 +1160,23 @@ select:focus-visible {
         <div class="format-price">400 ₴ <small>/ 1 година</small></div>
         <a href="https://bookon.ua/s/tess.language" class="btn btn--primary btn--small" style="margin-top: 10px;" target="_blank">Записатися</a>
       </div>
-
     </div>
 
     <div class="discount-timer-wrapper fade-in" style="text-align: center; margin-top: 56px;">
       <div style="display: inline-flex; flex-direction: column; align-items: center; background: var(--card-bg); padding: 24px 40px; border-radius: var(--radius); border: 1px solid var(--card-border); box-shadow: 0 4px 24px rgba(0,0,0,0.04);">
         <h3 style="font-size: 1.125rem; font-family: var(--font-display); font-weight: normal; margin-bottom: 12px; color: var(--fg);"><span style="color: var(--accent);">До кінця</span> дії знижки залишилося:</h3>
         <div id="discount-timer" style="display: flex; gap: 20px; color: var(--fg);">
-          <!-- js content expected here -->
         </div>
       </div>
     </div>
-
   </div>
 </section>
-<!-- Teachers --><section class="section" id="teachers">
+
+<section class="section" id="teachers">
   <div class="container">
     <div class="section-header section-header--center fade-in">
       <p class="section-label">Команда</p>
       <h2 class="section-title">Наші викладачі</h2>
-      
     </div>
     <div class="teacher-grid">
       <div class="teacher-card fade-in">
@@ -1225,56 +1184,45 @@ select:focus-visible {
         <div class="teacher-info">
           <span class="teacher-role">Старший викладач</span>
           <h3>Краснянська Анастасія</h3>
-          <p>Засновник і керівник мовної школи, а також практикуючий онлайн-репетитор англійської та італійської мов. Досвід роботи понад 3 років допомагає дітям та дорослим долати мовний бар'єр, закохуватися в іноземні мови та досягати поставлених цілей.
-Кожен студент отримує максимум уваги, інтерактивні уроки та помітний результат уже з перших занять.</p>
+          <p>Засновник і керівник мовної школи, а також практикуючий онлайн-репетитор англійської та італійської мов. Досвід роботи понад 3 років допомагає дітям та дорослим долати мовний бар'єр, закохуватися в іноземні мови та досягати поставлених цілей. Кожен студент отримує максимум уваги, інтерактивні уроки та помітний результат уже з перших занять.</p>
         </div>
       </div>
       <div class="teacher-card fade-in">
-        <!-- Щоб додати фото викладача, замініть <div> нижче на тег зображення:
-               <img src="шлях_до_фото.jpg" alt="Ім'я викладача" class="teacher-avatar" style="object-fit: cover;"> -->
-          <img src="tesslanguage_photos\photo_5354847744872359304_y.jpg" alt="Анастасія Віталіївна" class="teacher-avatar">
+        <img src="tesslanguage_photos\photo_5354847744872359304_y.jpg" alt="Анастасія Віталіївна" class="teacher-avatar">
         <div class="teacher-info">
           <span class="teacher-role">Викладач Англійської мови</span>
           <h3>Загурська Вероніка</h3>
-          <p>Прoводить заняття онлайн як для дітей, так і для дорослих. Її мета — створити комфортну й дружню атмосферу, де кожен зможе легко подолати мовний бар'єр, розібратися в складних правилах та впевнено заговорити англійською.</p>
-          
+          <p>Проводить заняття онлайн як для дітей, так і для дорослих. Її мета — створити комфортну й дружню атмосферу, де кожен зможе легко подолати мовний бар'єр, розібратися в складних правилах та впевнено заговорити англійською.</p>
         </div>
       </div>
-	  <div class="teacher-grid">
       <div class="teacher-card fade-in">
         <img src="tesslanguage_photos\photo_5359572500955735303_y.jpg" alt="Анастасія Віталіївна" class="teacher-avatar">
         <div class="teacher-info">
           <span class="teacher-role">Викладач англійської мови</span>
           <h3>Тьо Вероніка Ігорівна </h3>
-          <p>Прагнить зробити вивчення англійської мови цікавим і комфортним. Допомагає всім своїм учням впевненіше використовувати англійську в повсякденному житті. Використовує сучасні інтерактивні методи викладання..</p>
+          <p>Прагнить зробити вивчення англійської мови цікавим і комфортним. Допомагає всім своїм учням впевненіше використовувати англійську в повсякденному житті. Використовує сучасні інтерактивні методи викладання.</p>
         </div>
       </div>
-	    <div class="teacher-grid">
       <div class="teacher-card fade-in">
         <img src="tesslanguage_photos\photo_5363908038512812590_y.jpg" alt="Анастасія Віталіївна" class="teacher-avatar">
         <div class="teacher-info">
           <span class="teacher-role">Викладач французької мови</span>
           <h3>Бахмат Євгенія Григорівна </h3>
-          <p>Прагнить зробити вивчення англійської мови цікавим і комфортним. Допомагає всім своїм учням впевненіше використовувати англійську в повсякденному житті. Використовує сучасні інтерактивні методи викладання..</p>
+          <p>Прагнить зробити вивчення французької мови цікавим і комфортним. Допомагає всім своїм учням впевненіше використовувати мову в повсякденному житті. Використовує сучасні інтерактивні методи викладання.</p>
         </div>
       </div>
-	  <div class="teacher-card fade-in">
-        <!-- Щоб додати фото викладача, замініть <div> нижче на тег зображення:
-               <img src="шлях_до_фото.jpg" alt="Ім'я викладача" class="teacher-avatar" style="object-fit: cover;"> -->
-          <img src="tesslanguage_photos\photo_5354886030210834358_y.jpg" alt="Анастасія Віталіївна" class="teacher-avatar">
+      <div class="teacher-card fade-in">
+        <img src="tesslanguage_photos\photo_5354886030210834358_y.jpg" alt="Анастасія Віталіївна" class="teacher-avatar">
         <div class="teacher-info">
           <span class="teacher-role">Викладач англійської та польської мов</span>
           <h3>Лазепнікова Єлизавета</h3>
-          <p>Сучасна онлайн-репетиторка, яка ламає стереотипи про нудне вивчення англійської та польської мов.
-Вона легко знаходить спільну мову як із дітьми, так і з дорослими, перетворюючи кожне заняття на захопливий інтерактив.</p>
-          
+          <p>Сучасна онлайн-репетиторка, яка ламає стереотипи про нудне вивчення англійської та польської мов. Вона легко знаходить спільну мову як із дітьми, так і з дорослими, перетворюючи кожне заняття на захопливий інтерактив.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Steps -->
 <section class="section section--alt" id="steps">
   <div class="container">
     <div class="section-header section-header--center fade-in">
@@ -1317,7 +1265,6 @@ select:focus-visible {
   </div>
 </section>
 
-<!-- Trial -->
 <section class="trial-section" id="trial">
   <div class="container">
     <div class="trial-inner">
@@ -1336,7 +1283,6 @@ select:focus-visible {
   </div>
 </section>
 
-<!-- FAQ -->
 <section class="section" id="faq">
   <div class="container--narrow">
     <div class="section-header section-header--center fade-in">
@@ -1402,7 +1348,6 @@ select:focus-visible {
   </div>
 </section>
 
-<!-- Footer -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -1447,7 +1392,6 @@ select:focus-visible {
 </footer>
 
 <script>
-// Theme toggle
 const themeToggle = document.getElementById('themeToggle');
 const iconSun = document.getElementById('themeIconSun');
 const iconMoon = document.getElementById('themeIconMoon');
@@ -1474,13 +1418,11 @@ themeToggle.addEventListener('click', () => {
   updateThemeIcon(currentTheme);
 });
 
-// Header scroll shadow
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
 
-// Mobile menu
 const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobileMenu');
 burger.addEventListener('click', () => {
@@ -1494,7 +1436,6 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
-// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     const target = document.querySelector(link.getAttribute('href'));
@@ -1508,14 +1449,12 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
     const item = btn.parentElement;
     const answer = item.querySelector('.faq-answer');
     const isOpen = item.classList.contains('open');
 
-    // Close all
     document.querySelectorAll('.faq-item.open').forEach(el => {
       el.classList.remove('open');
       el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
@@ -1530,7 +1469,6 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-// Scroll-based fade in
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1544,17 +1482,15 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 }
 
-// Discount Timer
 function updateDiscountTimer() {
   const timerEl = document.getElementById('discount-timer');
   if (!timerEl) return;
 
   const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
-  // Set an initial random duration (5-6 days, 0-23 hours) if not already set
   let originStr = localStorage.getItem('discountOrigin');
   if (!originStr) {
-    const randomDays = Math.floor(Math.random() * 2) + 5; // 5 or 6
-    const randomHours = Math.floor(Math.random() * 24); // 0 to 23
+    const randomDays = Math.floor(Math.random() * 2) + 5; 
+    const randomHours = Math.floor(Math.random() * 24); 
     const randomTotalMs = (randomDays * 24 + randomHours) * 60 * 60 * 1000;
     const oneWeekMs = 7 * 24 * 60 * 60 * 1000;
     const originDateMs = Date.now() - (oneWeekMs - randomTotalMs);
@@ -1622,8 +1558,6 @@ function updateDiscountTimer() {
 }
 setInterval(updateDiscountTimer, 1000);
 updateDiscountTimer();
-
 </script>
 </body>
 </html>
-
