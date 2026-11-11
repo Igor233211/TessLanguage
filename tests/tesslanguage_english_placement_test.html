@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>English Placement Test вЂ” TessLanguage</title>
+<title>English Placement Test — TessLanguage</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root {
@@ -300,8 +300,8 @@ footer { text-align: center; color: var(--fg-light); font-size: 0.8125rem; paddi
   <div class="header-inner">
     <a href="../tesslanguage.html" class="logo">Tess<span>Language</span></a>
     <div class="header-right">
-      <a href="../tesslanguage.html" class="back-link">в†ђ РќР° РіРѕР»РѕРІРЅСѓ СЃР°Р№С‚Сѓ</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Р—РјС–РЅРёС‚Рё С‚РµРјСѓ">
+      <a href="../tesslanguage.html" class="back-link">← На головну сайту</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Змінити тему">
         <svg id="themeIconSun" viewBox="0 0 24 24" style="display: none;"><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" stroke-width="2"/></svg>
         <svg id="themeIconMoon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" stroke="currentColor" fill="none" stroke-width="2" stroke-linejoin="round"/></svg>
       </button>
@@ -313,7 +313,7 @@ footer { text-align: center; color: var(--fg-light); font-size: 0.8125rem; paddi
 <section id="welcome" class="card">
   <div class="intro-grid">
     <div>
-      <div class="pills"><span class="pill">A1вЂ“C2 CEFR</span><span class="pill">Skills-based assessment</span><span class="pill">Approx. 35вЂ“50 min</span></div>
+      <div class="pills"><span class="pill">A1–C2 CEFR</span><span class="pill">Skills-based assessment</span><span class="pill">Approx. 35–50 min</span></div>
       <h1>English Placement Test</h1>
       <p class="muted">Discover your current English level and get a personalised recommendation for your next stage of learning.</p>
       <ul style="margin: 16px 0 16px 20px; color: var(--fg-muted);">
@@ -322,8 +322,8 @@ footer { text-align: center; color: var(--fg-light); font-size: 0.8125rem; paddi
         <li>Three listening tasks</li>
         <li>Optional writing assessment</li>
       </ul>
-      <p class="muted" style="margin-bottom: 20px;"><strong>Before you begin:</strong> choose the best answer for each question. Try not to use dictionaries or translators. Listening recordings are built into the test вЂ” headphones are recommended.</p>
-      <button id="startBtn">Start placement test в†’</button>
+      <p class="muted" style="margin-bottom: 20px;"><strong>Before you begin:</strong> choose the best answer for each question. Try not to use dictionaries or translators. Listening recordings are built into the test — headphones are recommended.</p>
+      <button id="startBtn">Start placement test →</button>
     </div>
     <div class="result-note">
       <h3>How it works</h3>
@@ -356,18 +356,18 @@ footer { text-align: center; color: var(--fg-light); font-size: 0.8125rem; paddi
       <div id="listeningQs"></div>
     </section>
     <section class="card test-section hidden" data-section="4">
-      <div class="section-title"><div><h2>5. Writing (optional)</h2><div class="muted">Write 100вЂ“180 words. Your writing is not automatically graded; use the rubric in your results.</div></div><span class="count">Optional</span></div>
+      <div class="section-title"><div><h2>5. Writing (optional)</h2><div class="muted">Write 100–180 words. Your writing is not automatically graded; use the rubric in your results.</div></div><span class="count">Optional</span></div>
       <p style="margin-bottom: 12px; color: var(--fg-muted);"><strong>Task:</strong> Describe a change you would like to make in your life, studies, or work. Explain why it matters, what you would do, and what challenges you might face. Try to use language that feels natural to you.</p>
-      <textarea id="writing" maxlength="2500" placeholder="Write your response hereвЂ¦"></textarea>
+      <textarea id="writing" maxlength="2500" placeholder="Write your response here…"></textarea>
       <div class="muted" id="wordCount" style="margin-top: 6px;">0 words</div>
       <div class="result-note" style="margin-top:20px">
-        <strong>Writing rubric (0вЂ“5 each)</strong><br>Grammar accuracy В· Vocabulary range and appropriacy В· Coherence and organisation В· Task completion and development. A teacher should assess this section; it is excluded from the automatic score.
+        <strong>Writing rubric (0–5 each)</strong><br>Grammar accuracy · Vocabulary range and appropriacy · Coherence and organisation · Task completion and development. A teacher should assess this section; it is excluded from the automatic score.
       </div>
     </section>
     <div class="card actions">
-      <button type="button" class="secondary" id="backBtn">в†ђ Previous</button>
+      <button type="button" class="secondary" id="backBtn">← Previous</button>
       <div>
-        <button type="button" id="nextBtn">Next section в†’</button>
+        <button type="button" id="nextBtn">Next section →</button>
         <button type="submit" id="submitBtn" class="hidden">Finish and see results</button>
       </div>
     </div>
@@ -375,11 +375,10 @@ footer { text-align: center; color: var(--fg-light); font-size: 0.8125rem; paddi
 </div>
 
 <section id="results" class="card hidden"></section>
-<footer>В© TessLanguage В· English placement assessment В· Results are estimates, not official certification.</footer>
+<footer>© TessLanguage · English placement assessment · Results are estimates, not official certification.</footer>
 </main>
 
 <script>
-// Theme switcher logic
 const themeToggle = document.getElementById('themeToggle');
 const themeIconSun = document.getElementById('themeIconSun');
 const themeIconMoon = document.getElementById('themeIconMoon');
@@ -425,7 +424,7 @@ const grammar = [
 ["I've lived here ___ 2021.","for","since","during","from","B","B1"],
 ["You ___ wear a seat belt; it's the law.","might","could","must","would","C","B1"],
 ["The meeting ___ by the time I arrived.","has finished","had finished","was finishing","would finish","B","B1"],
-["This is the cafГ© ___ we first met.","which","whose","where","who","C","B1"],
+["This is the café ___ we first met.","which","whose","where","who","C","B1"],
 ["The new bridge ___ next year.","will complete","will be completed","is completing","has completed","B","B1"],
 ["She asked me where I ___.","live","do I live","lived","have lived","C","B2"],
 ["If I ___ about the delay, I would have left later.","knew","had known","would know","have known","B","B2"],
@@ -456,29 +455,29 @@ const vocab = [
 ["The claim is not merely doubtful; it is entirely ___.","tenable","untenable","attainable","attentive","B","C2"]
 ];
 const readings = [
-{title:"A new routine",level:"A1вЂ“A2",text:"Mia has a busy week. She works in a bookshop from Monday to Friday and studies English online twice a week. On Saturdays, she visits her grandmother, who lives near the sea. Mia wants to improve her English because she hopes to travel to Ireland next year. She studies for twenty minutes every morning and listens to English podcasts on the bus.",qs:[
-["Where does Mia work?","At a school","In a bookshop","At a hotel","In a cafГ©","B"],
+{title:"A new routine",level:"A1–A2",text:"Mia has a busy week. She works in a bookshop from Monday to Friday and studies English online twice a week. On Saturdays, she visits her grandmother, who lives near the sea. Mia wants to improve her English because she hopes to travel to Ireland next year. She studies for twenty minutes every morning and listens to English podcasts on the bus.",qs:[
+["Where does Mia work?","At a school","In a bookshop","At a hotel","In a café","B"],
 ["When does she visit her grandmother?","On Fridays","Every morning","On Saturdays","Twice a week","C"],
 ["Why is she learning English?","To move house","To travel to Ireland","To become a teacher","To help her grandmother","B"]]},
-{title:"Working flexibly",level:"B1вЂ“B2",text:"When a small design agency introduced flexible working, the managers expected productivity to rise immediately. The results were more complicated. Some employees appreciated being able to organise their day around family responsibilities, while others missed the informal conversations that used to happen in the office. After three months, the agency introduced two shared office days each week. Staff reported better communication, although the arrangement did not suit everyone. The managers concluded that flexibility worked best when teams agreed on clear expectations rather than following a single rule.",qs:[
+{title:"Working flexibly",level:"B1–B2",text:"When a small design agency introduced flexible working, the managers expected productivity to rise immediately. The results were more complicated. Some employees appreciated being able to organise their day around family responsibilities, while others missed the informal conversations that used to happen in the office. After three months, the agency introduced two shared office days each week. Staff reported better communication, although the arrangement did not suit everyone. The managers concluded that flexibility worked best when teams agreed on clear expectations rather than following a single rule.",qs:[
 ["What did the managers initially expect?","Higher productivity","Lower office costs only","More staff resignations","Fewer client projects","A"],
 ["Why did the agency introduce shared office days?","To monitor staff hours","To improve communication","To reduce annual leave","To hire more designers","B"],
 ["What is the main conclusion?","Remote work never works","Everyone prefers the office","A single policy suits all teams","Flexibility needs clear, agreed expectations","D"]]},
-{title:"The value of uncertainty",level:"C1вЂ“C2",text:"Public discussion often treats uncertainty as a defect to be eliminated, particularly when institutions communicate scientific findings. Yet uncertainty can be a sign of intellectual discipline: it distinguishes what the evidence supports from what remains conjectural. Problems arise when qualified statements are simplified into absolute claims, or when the public interprets a revision as proof that experts were unreliable all along. A more productive approach would make the limits of current knowledge visible without implying that all explanations are equally credible. The task is not to celebrate indecision, but to communicate degrees of confidence with enough precision that people can make informed choices.",qs:[
+{title:"The value of uncertainty",level:"C1–C2",text:"Public discussion often treats uncertainty as a defect to be eliminated, particularly when institutions communicate scientific findings. Yet uncertainty can be a sign of intellectual discipline: it distinguishes what the evidence supports from what remains conjectural. Problems arise when qualified statements are simplified into absolute claims, or when the public interprets a revision as proof that experts were unreliable all along. A more productive approach would make the limits of current knowledge visible without implying that all explanations are equally credible. The task is not to celebrate indecision, but to communicate degrees of confidence with enough precision that people can make informed choices.",qs:[
 ["What does the passage suggest uncertainty can demonstrate?","A lack of expertise","Intellectual discipline","Indifference to evidence","A refusal to decide","B"],
 ["How can public trust be damaged?","By acknowledging limits","By comparing evidence","When revisions are treated as proof of unreliability","When all claims are carefully qualified","C"],
 ["What approach does the writer favour?","Treating every explanation as equally valid","Avoiding scientific communication","Presenting every finding as certain","Explaining confidence levels precisely","D"]]}
 ];
 const listening = [
-{title:"Task 1 вЂ” Everyday conversation",level:"A1вЂ“A2",hint:"Listen to two friends arranging to meet.",qs:[
+{title:"Task 1 — Everyday conversation",level:"A1–A2",hint:"Listen to two friends arranging to meet.",qs:[
 ["What time are the speakers planning to meet?","At 10:15","At 10:30","At 11:00","At 11:30","B"],
-["Where will they meet?","Outside the station","Inside the library","At a cafГ©","At the bus stop","C"],
+["Where will they meet?","Outside the station","Inside the library","At a café","At the bus stop","C"],
 ["Why might one speaker be late?","Their bus is delayed","They have lost a wallet","They need to work late","They forgot the address","A"]]},
-{title:"Task 2 вЂ” An announcement",level:"B1вЂ“B2",hint:"Listen to an announcement at a conference. Listen for the changes and practical details.",qs:[
+{title:"Task 2 — An announcement",level:"B1–B2",hint:"Listen to an announcement at a conference. Listen for the changes and practical details.",qs:[
 ["What has changed?","The event date","The room for the afternoon session","The speaker's name","The ticket price","B"],
 ["What should attendees do before the session?","Collect a new ticket","Email the organiser","Register at the front desk","Wait outside","C"],
 ["What will be provided?","Lunch","Printed dictionaries","Transport","A recording of every session","A"]]},
-{title:"Task 3 вЂ” Longer discussion",level:"C1вЂ“C2",hint:"Listen to a radio interview about technology in education.",qs:[
+{title:"Task 3 — Longer discussion",level:"C1–C2",hint:"Listen to a radio interview about technology in education.",qs:[
 ["What is the speaker's main argument?","Technology always improves learning","Learning outcomes depend on how tools are used","Traditional teaching should be abandoned","Students prefer working alone","B"],
 ["What concern is mentioned?","The cost of textbooks","Unequal access to reliable technology","Too many exams","Lack of classroom space","B"],
 ["What does the speaker recommend?","Replacing teachers with software","Banning digital tools","Evaluating tools against clear learning goals","Using the same tool in every class","C"]]}
@@ -490,9 +489,9 @@ function renderMC(target, items, prefix){
  const root=document.getElementById(target); let n=0;
  if(prefix==="reading"||prefix==="listening"){
   items.forEach((group,gi)=>{
-   if(prefix==="reading"){const passage=document.createElement("div");passage.className="passage";passage.innerHTML="<strong>"+group.title+" В· "+group.level+"</strong><br>"+group.text;root.appendChild(passage)}
+   if(prefix==="reading"){const passage=document.createElement("div");passage.className="passage";passage.innerHTML="<strong>"+group.title+" · "+group.level+"</strong><br>"+group.text;root.appendChild(passage)}
    else{
-    const box=document.createElement("div");box.className="audio-box";box.innerHTML="<h3>"+group.title+" В· "+group.level+"</h3><p class='muted'>"+group.hint+"</p><audio controls preload='metadata' src='"+AUDIO[gi]+"'></audio>";root.appendChild(box);
+    const box=document.createElement("div");box.className="audio-box";box.innerHTML="<h3>"+group.title+" · "+group.level+"</h3><p class='muted'>"+group.hint+"</p><audio controls preload='metadata' src='"+AUDIO[gi]+"'></audio>";root.appendChild(box);
    }
    group.qs.forEach((q,qi)=>{n++;root.appendChild(question(prefix+"_"+gi+"_"+qi,n,q[0],q.slice(1,5),q[5],group.level))});
   });return;
@@ -516,7 +515,7 @@ document.getElementById("writing").addEventListener("input",e=>{const words=e.ta
 function scoreSection(section){const qs=[...section.querySelectorAll(".q[data-correct]")];let right=0,answered=0,byLevel={};qs.forEach(q=>{const checked=q.querySelector("input:checked");if(checked)answered++;const lev=q.dataset.level||"Unknown";byLevel[lev]??={total:0,right:0};byLevel[lev].total++;if(checked&&checked.value===q.dataset.correct){right++;byLevel[lev].right++}});return {right,total:qs.length,answered,pct:qs.length?Math.round(right/qs.length*100):0,byLevel}}
 function levelEstimate(scores){
  const all=[...document.querySelectorAll(".q[data-correct]")];let weighted=0,weight=0;
- const vals={"A1":1,"A1вЂ“A2":1.5,"A2":2,"B1":3,"B1вЂ“B2":3.5,"B2":4,"C1":5,"C2":6};
+ const vals={"A1":1,"A1–A2":1.5,"A2":2,"B1":3,"B1–B2":3.5,"B2":4,"C1":5,"C2":6};
  all.forEach(q=>{const checked=q.querySelector("input:checked");if(!checked||checked.value!==q.dataset.correct)return;const v=vals[q.dataset.level]||3;weighted+=v;weight++});
  const total=all.length, pct=total?Object.values(scores).reduce((a,s)=>a+s.right,0)/total:0;
  const raw=weight?weighted/weight:1;let lvl;
@@ -528,10 +527,10 @@ function renderResults(){
  const objectiveTotal=Object.values(score).reduce((a,s)=>a+s.total,0),correctTotal=Object.values(score).reduce((a,s)=>a+s.right,0);
  const estimate=levelEstimate(score),r=document.getElementById("results");
  const skillNames=Object.keys(score);
- let skillHTML=skillNames.map(k=>`<div class="skill-row"><div class="skill-label"><span>${k}</span><strong>${score[k].right}/${score[k].total} В· ${score[k].pct}%</strong></div><div class="mini-track"><div class="mini-fill" style="width:${score[k].pct}%"></div></div></div>`).join("");
+ let skillHTML=skillNames.map(k=>`<div class="skill-row"><div class="skill-label"><span>${k}</span><strong>${score[k].right}/${score[k].total} · ${score[k].pct}%</strong></div><div class="mini-track"><div class="mini-fill" style="width:${score[k].pct}%"></div></div></div>`).join("");
  const best=skillNames.slice().sort((a,b)=>score[b].pct-score[a].pct)[0],weak=skillNames.slice().sort((a,b)=>score[a].pct-score[b].pct)[0];
  const rec={"A1":"Start with everyday words, basic sentence patterns, and present-tense communication.","A2":"Build confidence with past and future forms, practical vocabulary, and short everyday texts.","B1":"Practise connected speech, common collocations, longer texts, and explaining opinions.","B2":"Focus on nuance, complex grammar, idiomatic language, and structured argumentation.","C1":"Develop precision, register awareness, advanced collocations, and critical reading/listening.","C2":"Maintain a broad range of authentic input and refine subtle differences in meaning, style, and register."};
- r.innerHTML=`<div class="pills"><span class="pill">Assessment complete</span><span class="pill">Estimated CEFR result</span></div><h1>Your TessLanguage results</h1><p class="muted">Your estimated level is</p><div class="result-level">${estimate.lvl}</div><p class="muted">CEFR estimate based on accuracy and performance across questions of increasing difficulty. It is not an official certification.</p><div class="score-grid"><div class="score-box"><strong>${Math.round(correctTotal/objectiveTotal*100)}%</strong><span>Overall objective score</span></div><div class="score-box"><strong>${correctTotal}/${objectiveTotal}</strong><span>Correct answers</span></div><div class="score-box"><strong>${score.Listening.pct}%</strong><span>Listening score*</span></div><div class="score-box"><strong>${estimate.lvl}</strong><span>Suggested study level</span></div></div><h2>Skill breakdown</h2>${skillHTML}<div class="result-note"><h3>What this suggests</h3><p style="margin-bottom: 8px;">Your strongest section in this attempt was <strong>${best}</strong>; the section to prioritise is <strong>${weak}</strong>.</p><p style="margin-bottom: 12px;">${rec[estimate.lvl]}</p><p style="margin-bottom: 14px;"><strong>Recommended next step:</strong> book a free 45-minute trial lesson with TessLanguage. A teacher can confirm your level in a live conversation and assess speaking and writing, which this automated test cannot fully measure.</p><button onclick="window.location.href='https://bookon.ua/s/tess.language'">Book a free 45-minute trial lesson в†’</button></div><h2 style="margin-top:24px">Writing (optional вЂ” teacher assessment)</h2><p class="muted">Writing is not included in the automatic score. A teacher can assess your response using the rubric: grammar, vocabulary, coherence, and task completion (0вЂ“5 each). If you wrote a response, copy it before leaving this page if you want to keep it.</p><p class="muted" style="margin-top: 8px;">*The listening score is based on the recordings built into this test.</p><div class="actions"><button class="secondary" onclick="window.print()">Print results</button><button onclick="location.reload()">Retake test</button></div>`;
+ r.innerHTML=`<div class="pills"><span class="pill">Assessment complete</span><span class="pill">Estimated CEFR result</span></div><h1>Your TessLanguage results</h1><p class="muted">Your estimated level is</p><div class="result-level">${estimate.lvl}</div><p class="muted">CEFR estimate based on accuracy and performance across questions of increasing difficulty. It is not an official certification.</p><div class="score-grid"><div class="score-box"><strong>${Math.round(correctTotal/objectiveTotal*100)}%</strong><span>Overall objective score</span></div><div class="score-box"><strong>${correctTotal}/${objectiveTotal}</strong><span>Correct answers</span></div><div class="score-box"><strong>${score.Listening.pct}%</strong><span>Listening score*</span></div><div class="score-box"><strong>${estimate.lvl}</strong><span>Suggested study level</span></div></div><h2>Skill breakdown</h2>${skillHTML}<div class="result-note"><h3>What this suggests</h3><p style="margin-bottom: 8px;">Your strongest section in this attempt was <strong>${best}</strong>; the section to prioritise is <strong>${weak}</strong>.</p><p style="margin-bottom: 12px;">${rec[estimate.lvl]}</p><p style="margin-bottom: 14px;"><strong>Recommended next step:</strong> book a free 45-minute trial lesson with TessLanguage. A teacher can confirm your level in a live conversation and assess speaking and writing, which this automated test cannot fully measure.</p><button onclick="window.location.href='https://bookon.ua/s/tess.language'">Book a free 45-minute trial lesson →</button></div><h2 style="margin-top:24px">Writing (optional — teacher assessment)</h2><p class="muted">Writing is not included in the automatic score. A teacher can assess your response using the rubric: grammar, vocabulary, coherence, and task completion (0–5 each). If you wrote a response, copy it before leaving this page if you want to keep it.</p><p class="muted" style="margin-top: 8px;">*The listening score is based on the recordings built into this test.</p><div class="actions"><button class="secondary" onclick="window.print()">Print results</button><button onclick="location.reload()">Retake test</button></div>`;
  document.getElementById("testArea").classList.add("hidden");r.classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});
 }
 document.getElementById("testForm").addEventListener("submit",e=>{e.preventDefault();if(!confirm("Submit your answers and view your results? Correct answers will not be displayed."))return;renderResults()});
